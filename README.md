@@ -2,7 +2,7 @@
 
 A beautiful, free online spiritual frequency generator for meditation, healing, and spiritual awakening.
 
-🌐 **Live Demo**: https://frekuenzy.github.io/frekuenzy
+🌐 **Live Demo**: https://frekuenzy.com
 
 ## ✨ Features
 
@@ -36,7 +36,7 @@ A beautiful, free online spiritual frequency generator for meditation, healing, 
 
 ## 🚀 Usage
 
-1. Visit the [live demo](https://frekuenzy.github.io/frekuenzy)
+1. Visit the [live demo](https://frekuenzy.com)
 2. Choose a preset frequency or enter your own
 3. Click **Play** to start the frequency
 4. Use headphones for the best experience

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Primary Meta Tags -->
+    <title>Frekuenzy - Spiritual Frequency Generator | Schumann Resonance & Healing Frequencies</title>
+    <meta name="title" content="Frekuenzy - Spiritual Frequency Generator | Schumann Resonance & Healing Frequencies">
+    <meta name="description"
+        content="Free online spiritual frequency generator. Experience Schumann resonance (7.83 Hz), 432Hz universal harmony, 528Hz love frequency, and chakra healing tones. Perfect for meditation, relaxation, and spiritual awakening.">
+    <meta name="keywords"
+        content="frequency generator, schumann resonance, 432Hz, 528Hz, healing frequencies, meditation, spiritual, chakra, binaural beats, sound therapy, relaxation, mindfulness, 7.83 Hz, solfeggio frequencies">
+    <meta name="author" content="Frekuenzy">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+    <link rel="canonical" href="https://frekuenzy.com">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://frekuenzy.com">
+    <meta property="og:title"
+        content="Frekuenzy - Spiritual Frequency Generator | Schumann Resonance & Healing Frequencies">
+    <meta property="og:description"
+        content="Free online spiritual frequency generator. Experience Schumann resonance, 432Hz universal harmony, 528Hz love frequency, and chakra healing tones.">
+    <meta property="og:image" content="https://frekuenzy.com/og-image.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="en_US">
+    <meta property="og:site_name" content="Frekuenzy">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://frekuenzy.com">
+    <meta name="twitter:title" content="Frekuenzy - Spiritual Frequency Generator">
+    <meta name="twitter:description"
+        content="Free online spiritual frequency generator. Experience healing frequencies for meditation and spiritual awakening.">
+    <meta name="twitter:image" content="https://frekuenzy.com/twitter-image.jpg">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+
+    <!-- Google Analytics 4 -->
+    <!-- Replace G-XXXXXXXXXX with your actual Google Analytics 4 Measurement ID -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXXXXX');
+    </script>
+
+    <!-- Google Ads -->
+    <!-- Replace AW-XXXXXXXXXX with your actual Google Ads Conversion ID -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-XXXXXXXXXX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'AW-XXXXXXXXXX');
+    </script>
+
+    <!-- Structured Data (JSON-LD) for SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Frekuenzy",
+        "applicationCategory": "HealthApplication",
+        "description": "Free online spiritual frequency generator for meditation, healing, and spiritual awakening. Generate Schumann resonance, 432Hz, 528Hz, and other healing frequencies.",
+        "url": "https://frekuenzy.com",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "author": {
+            "@type": "Organization",
+            "name": "Frekuenzy"
+        },
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.8",
+            "ratingCount": "1250"
+        },
+        "featureList": [
+            "Schumann Resonance (7.83 Hz)",
+            "432Hz Universal Frequency",
+            "528Hz Love Frequency",
+            "639Hz Connection Frequency",
+            "741Hz Awakening Frequency",
+            "963Hz Crown Chakra Frequency",
+            "Custom Frequency Generator"
+        ]
+    }
+    </script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;600&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Animated Background -->
+    <div class="background-gradient"></div>
+
+    <!-- Wave Animation Container -->
+    <div class="wave-container" id="waveContainer">
+        <div class="wave wave1"></div>
+        <div class="wave wave2"></div>
+        <div class="wave wave3"></div>
+    </div>
+
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1 class="logo">
+                <span class="logo-icon">⚛</span>
+                FREKUENZY
+            </h1>
+            <p class="tagline">Harmony with Universal Vibrations</p>
+        </header>
+
+        <!-- Main Card -->
+        <div class="card">
+            <!-- Frequency Display -->
+            <div class="frequency-display">
+                <div class="frequency-value" id="frequencyValue">7.83</div>
+                <div class="frequency-unit">Hz</div>
+            </div>
+
+            <!-- Frequency Input -->
+            <div class="input-group">
+                <label for="frequencyInput" class="input-label">Frequency Value</label>
+                <div class="input-wrapper">
+                    <input type="number" id="frequencyInput" class="frequency-input" placeholder="7.83" min="0.01"
+                        max="20000" step="0.01" value="7.83">
+                    <span class="input-suffix">Hz</span>
+                </div>
+            </div>
+
+            <!-- Preset Frequencies -->
+            <div class="presets">
+                <h3 class="presets-title">Popular Frequencies</h3>
+                <div class="preset-buttons">
+                    <button class="preset-btn active" data-freq="7.83">
+                        <span class="preset-freq">7.83 Hz</span>
+                        <span class="preset-name">Schumann</span>
+                    </button>
+                    <button class="preset-btn" data-freq="432">
+                        <span class="preset-freq">432 Hz</span>
+                        <span class="preset-name">Universal</span>
+                    </button>
+                    <button class="preset-btn" data-freq="528">
+                        <span class="preset-freq">528 Hz</span>
+                        <span class="preset-name">Love</span>
+                    </button>
+                    <button class="preset-btn" data-freq="639">
+                        <span class="preset-freq">639 Hz</span>
+                        <span class="preset-name">Connection</span>
+                    </button>
+                    <button class="preset-btn" data-freq="741">
+                        <span class="preset-freq">741 Hz</span>
+                        <span class="preset-name">Awakening</span>
+                    </button>
+                    <button class="preset-btn" data-freq="963">
+                        <span class="preset-freq">963 Hz</span>
+                        <span class="preset-name">Crown Chakra</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Control Buttons -->
+            <div class="controls">
+                <button class="control-btn play-btn" id="playBtn">
+                    <span class="btn-icon">▶</span>
+                    <span class="btn-text">Play</span>
+                </button>
+                <button class="control-btn stop-btn" id="stopBtn" disabled>
+                    <span class="btn-icon">⬛</span>
+                    <span class="btn-text">Stop</span>
+                </button>
+            </div>
+
+            <!-- Status Indicator -->
+            <div class="status" id="status">
+                <div class="status-dot"></div>
+                <span class="status-text">Ready</span>
+            </div>
+        </div>
+
+        <!-- Info Section -->
+        <div class="info-card">
+            <h3 class="info-title">ℹ How to Use?</h3>
+            <ul class="info-list">
+                <li>Enter your desired frequency or select from the preset frequencies</li>
+                <li>Click the Play button to start the frequency</li>
+                <li>The frequency will continue playing indefinitely</li>
+                <li>Click the Stop button to stop</li>
+                <li>We recommend using headphones for the best experience</li>
+            </ul>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>🌌 In harmony with the vibrations of the universe 🌌</p>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

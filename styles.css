@@ -1,0 +1,719 @@
+/* ===================================
+   RESET & BASE STYLES
+   =================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* Color Palette - Spiritual & Cosmic */
+    --bg-dark: #0a0118;
+    --bg-gradient-1: #1a0b2e;
+    --bg-gradient-2: #16213e;
+    --accent-primary: #00ffff;
+    --accent-secondary: #9d00ff;
+    --accent-tertiary: #ff00ff;
+    --accent-gold: #ffd700;
+    --text-primary: #ffffff;
+    --text-secondary: #b8b8d1;
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.1);
+
+    /* Fonts */
+    --font-display: 'Orbitron', sans-serif;
+    --font-body: 'Inter', sans-serif;
+
+    /* Spacing */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 3rem;
+}
+
+body {
+    font-family: var(--font-body);
+    background: var(--bg-dark);
+    color: var(--text-primary);
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* ===================================
+   ANIMATED BACKGROUND
+   =================================== */
+.background-gradient {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    background: linear-gradient(135deg,
+            var(--bg-gradient-1) 0%,
+            var(--bg-dark) 50%,
+            var(--bg-gradient-2) 100%);
+    animation: gradientShift 15s ease infinite;
+}
+
+@keyframes gradientShift {
+
+    0%,
+    100% {
+        transform: scale(1) rotate(0deg);
+    }
+
+    50% {
+        transform: scale(1.1) rotate(5deg);
+    }
+}
+
+/* ===================================
+   WAVE ANIMATIONS
+   =================================== */
+.wave-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    pointer-events: none;
+}
+
+.wave-container.active {
+    opacity: 1;
+}
+
+.wave {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    border: 2px solid var(--accent-primary);
+    animation: waveExpand 3s ease-out infinite;
+}
+
+.wave1 {
+    width: 100px;
+    height: 100px;
+    animation-delay: 0s;
+}
+
+.wave2 {
+    width: 100px;
+    height: 100px;
+    border-color: var(--accent-secondary);
+    animation-delay: 1s;
+}
+
+.wave3 {
+    width: 100px;
+    height: 100px;
+    border-color: var(--accent-tertiary);
+    animation-delay: 2s;
+}
+
+@keyframes waveExpand {
+    0% {
+        width: 100px;
+        height: 100px;
+        opacity: 1;
+    }
+
+    100% {
+        width: 800px;
+        height: 800px;
+        opacity: 0;
+    }
+}
+
+/* ===================================
+   CONTAINER & LAYOUT
+   =================================== */
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: var(--spacing-lg);
+    position: relative;
+    z-index: 1;
+}
+
+/* ===================================
+   HEADER
+   =================================== */
+.header {
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+    padding-top: var(--spacing-lg);
+}
+
+.logo {
+    font-family: var(--font-display);
+    font-size: 3rem;
+    font-weight: 900;
+    letter-spacing: 0.2em;
+    background: linear-gradient(135deg,
+            var(--accent-primary) 0%,
+            var(--accent-secondary) 50%,
+            var(--accent-tertiary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shimmer 3s ease-in-out infinite;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-sm);
+}
+
+.logo-icon {
+    font-size: 2.5rem;
+    animation: rotate 10s linear infinite;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes shimmer {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.8;
+    }
+}
+
+.tagline {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    margin-top: var(--spacing-sm);
+    font-weight: 300;
+    letter-spacing: 0.1em;
+}
+
+/* ===================================
+   CARD - GLASSMORPHISM
+   =================================== */
+.card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: 24px;
+    padding: var(--spacing-xl);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 48px rgba(157, 0, 255, 0.2);
+}
+
+/* ===================================
+   FREQUENCY DISPLAY
+   =================================== */
+.frequency-display {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    margin-bottom: var(--spacing-lg);
+    padding: var(--spacing-md);
+    background: rgba(0, 255, 255, 0.05);
+    border-radius: 16px;
+    border: 1px solid rgba(0, 255, 255, 0.2);
+}
+
+.frequency-value {
+    font-family: var(--font-display);
+    font-size: 4rem;
+    font-weight: 700;
+    color: var(--accent-primary);
+    text-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.frequency-unit {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    color: var(--text-secondary);
+    opacity: 0.7;
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+/* ===================================
+   INPUT GROUP
+   =================================== */
+.input-group {
+    margin-bottom: var(--spacing-lg);
+}
+
+.input-label {
+    display: block;
+    margin-bottom: var(--spacing-sm);
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 600;
+}
+
+.input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.frequency-input {
+    width: 100%;
+    padding: var(--spacing-md);
+    padding-right: 3rem;
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid var(--glass-border);
+    border-radius: 12px;
+    color: var(--text-primary);
+    outline: none;
+    transition: border-color 0.3s ease, background 0.3s ease;
+    letter-spacing: 0.15em;
+    text-align: center;
+}
+
+.frequency-input:focus {
+    border-color: var(--accent-primary);
+    background: rgba(0, 255, 255, 0.05);
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+}
+
+.input-suffix {
+    position: absolute;
+    right: var(--spacing-md);
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    color: var(--text-secondary);
+    pointer-events: none;
+}
+
+/* ===================================
+   PRESET BUTTONS
+   =================================== */
+.presets {
+    margin-bottom: var(--spacing-lg);
+}
+
+.presets-title {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: var(--spacing-md);
+    font-weight: 600;
+}
+
+.preset-buttons {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-sm);
+}
+
+.preset-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: var(--spacing-md) var(--spacing-sm);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: var(--font-body);
+}
+
+.preset-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--accent-primary);
+    transform: translateY(-2px);
+}
+
+.preset-btn.active {
+    background: linear-gradient(135deg, rgba(0, 255, 255, 0.2), rgba(157, 0, 255, 0.2));
+    border-color: var(--accent-primary);
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+}
+
+.preset-freq {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+}
+
+.preset-name {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* ===================================
+   CONTROL BUTTONS
+   =================================== */
+.controls {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+}
+
+.control-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-md);
+    font-family: var(--font-display);
+    font-size: 1.125rem;
+    font-weight: 700;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.play-btn {
+    background: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+    color: var(--bg-dark);
+    box-shadow: 0 4px 20px rgba(0, 255, 255, 0.4);
+}
+
+.play-btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 30px rgba(0, 255, 255, 0.6);
+}
+
+.play-btn:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+.stop-btn {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-primary);
+    border: 1px solid var(--glass-border);
+}
+
+.stop-btn:hover:not(:disabled) {
+    background: rgba(255, 0, 0, 0.2);
+    border-color: #ff0000;
+    transform: translateY(-2px);
+}
+
+.control-btn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+.btn-icon {
+    font-size: 1.25rem;
+}
+
+/* ===================================
+   STATUS INDICATOR
+   =================================== */
+.status {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-sm);
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--text-secondary);
+    transition: all 0.3s ease;
+}
+
+.status.playing .status-dot {
+    background: var(--accent-primary);
+    box-shadow: 0 0 10px var(--accent-primary);
+    animation: blink 1s ease-in-out infinite;
+}
+
+@keyframes blink {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+}
+
+/* ===================================
+   INFO CARD
+   =================================== */
+.info-card {
+    margin-top: var(--spacing-lg);
+    padding: var(--spacing-lg);
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: 16px;
+}
+
+.info-title {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    margin-bottom: var(--spacing-md);
+    color: var(--accent-gold);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.info-list {
+    list-style: none;
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+    line-height: 1.8;
+}
+
+.info-list li {
+    padding-left: var(--spacing-md);
+    position: relative;
+    margin-bottom: var(--spacing-xs);
+}
+
+.info-list li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: var(--accent-primary);
+}
+
+/* ===================================
+   FOOTER
+   =================================== */
+.footer {
+    text-align: center;
+    margin-top: var(--spacing-xl);
+    padding: var(--spacing-lg);
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+}
+
+/* ===================================
+   RESPONSIVE DESIGN
+   =================================== */
+
+/* Tablets and medium screens */
+@media (max-width: 768px) {
+    .container {
+        padding: var(--spacing-md);
+    }
+
+    .logo {
+        font-size: 2.5rem;
+    }
+
+    .logo-icon {
+        font-size: 2rem;
+    }
+
+    .tagline {
+        font-size: 0.9rem;
+    }
+
+    .frequency-value {
+        font-size: 3.5rem;
+    }
+
+    .frequency-unit {
+        font-size: 1.75rem;
+    }
+
+    .frequency-input {
+        font-size: 1.35rem;
+    }
+
+    .preset-buttons {
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--spacing-xs);
+    }
+
+    .preset-freq {
+        font-size: 0.9rem;
+    }
+
+    .preset-name {
+        font-size: 0.7rem;
+    }
+
+    .card {
+        padding: var(--spacing-lg);
+    }
+
+    .info-list {
+        font-size: 0.8rem;
+    }
+}
+
+/* Large mobile devices */
+@media (max-width: 640px) {
+    .container {
+        padding: var(--spacing-sm);
+    }
+
+    .logo {
+        font-size: 2rem;
+        letter-spacing: 0.1em;
+    }
+
+    .logo-icon {
+        font-size: 1.75rem;
+    }
+
+    .tagline {
+        font-size: 0.85rem;
+    }
+
+    .frequency-value {
+        font-size: 3rem;
+    }
+
+    .frequency-unit {
+        font-size: 1.5rem;
+    }
+
+    .frequency-input {
+        font-size: 1.25rem;
+        padding: var(--spacing-sm);
+    }
+
+    .input-suffix {
+        font-size: 1rem;
+        right: var(--spacing-sm);
+    }
+
+    .preset-buttons {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .preset-btn {
+        padding: var(--spacing-sm);
+    }
+
+    .controls {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-sm);
+    }
+
+    .control-btn {
+        padding: var(--spacing-md) var(--spacing-sm);
+        font-size: 1rem;
+    }
+
+    .card {
+        padding: var(--spacing-md);
+    }
+
+    .info-card {
+        padding: var(--spacing-md);
+    }
+}
+
+/* Small mobile devices */
+@media (max-width: 400px) {
+    .logo {
+        font-size: 1.75rem;
+    }
+
+    .logo-icon {
+        font-size: 1.5rem;
+    }
+
+    .frequency-value {
+        font-size: 2.5rem;
+    }
+
+    .frequency-unit {
+        font-size: 1.25rem;
+    }
+
+    .frequency-input {
+        font-size: 1.1rem;
+    }
+
+    .preset-freq {
+        font-size: 0.85rem;
+    }
+
+    .preset-name {
+        font-size: 0.65rem;
+    }
+
+    .control-btn {
+        font-size: 0.9rem;
+    }
+
+    .btn-icon {
+        font-size: 1rem;
+    }
+}
+
+/* ===================================
+   UTILITY CLASSES
+   =================================== */
+.hidden {
+    display: none;
+}
+
+/* Remove number input arrows */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="number"] {
+    appearance: textfield;
+    -moz-appearance: textfield;
+}

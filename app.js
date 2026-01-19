@@ -25,7 +25,28 @@ document.addEventListener('DOMContentLoaded', () => {
     initializeAudioContext();
     setupEventListeners();
     updateFrequencyDisplay();
+    checkCookieConsent();
 });
+
+// ===================================
+// COOKIE CONSENT LOGIC
+// ===================================
+function checkCookieConsent() {
+    const banner = document.getElementById('cookieBanner');
+    const acceptBtn = document.getElementById('acceptCookiesBtn');
+
+    // Check if user has already accepted
+    if (!localStorage.getItem('cookieConsent')) {
+        // Show banner
+        banner.classList.remove('hidden');
+    }
+
+    // Handle click
+    acceptBtn.addEventListener('click', () => {
+        localStorage.setItem('cookieConsent', 'true');
+        banner.classList.add('hidden');
+    });
+}
 
 // ===================================
 // AUDIO CONTEXT INITIALIZATION

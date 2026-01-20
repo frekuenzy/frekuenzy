@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bilateral Stimulation Audio (EMDR) - Frekuenzy</title>
+    <meta name="title" content="Bilateral Stimulation Audio - Free EMDR Tool">
+    <meta name="description"
+        content="Free online Bilateral Stimulation audio tool for EMDR therapy, anxiety relief, and focus. Alternating left-right audio processing to help process trauma and reduce stress.">
+    <meta name="keywords"
+        content="bilateral stimulation, emdr audio, alternating audio, anxiety relief, ptsd tool, focus music, adhd bilateral">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://frekuenzy.com/bilateral.html">
+
+    <!-- Fonts & Styles -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+        .panning-visualizer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 60px;
+            margin: 2rem 0;
+            padding: 0 2rem;
+            position: relative;
+        }
+
+        .ear-indicator {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid var(--glass-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+            transition: all 0.1s;
+        }
+
+        .ear-indicator.active {
+            background: var(--accent-primary);
+            color: var(--bg-dark);
+            box-shadow: 0 0 15px var(--accent-primary);
+            transform: scale(1.2);
+        }
+
+        .pan-path {
+            flex: 1;
+            height: 2px;
+            background: rgba(255, 255, 255, 0.1);
+            margin: 0 1rem;
+            position: relative;
+        }
+
+        .pan-dot {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 10px;
+            height: 10px;
+            background: var(--accent-secondary);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: left 0.1s linear;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="background-gradient"></div>
+    <div class="container">
+        <nav class="nav-bar">
+            <a href="/" class="nav-logo">FREKUENZY</a>
+            <div class="nav-links">
+                <a href="/">Home</a>
+                <div class="nav-item-dropdown">
+                    <button class="dropbtn">Tools ▾</button>
+                    <div class="dropdown-content">
+                        <a href="/">
+                            <span class="dropdown-title">Frequency Generator</span>
+                            <span class="dropdown-desc">Custom Hz & Binaural Beats</span>
+                        </a>
+                        <a href="bilateral.html">
+                            <span class="dropdown-title">Bilateral (EMDR)</span>
+                            <span class="dropdown-desc">Trauma & Anxiety Relief</span>
+                        </a>
+                        <a href="isochronic.html">
+                            <span class="dropdown-title">Isochronic Tones</span>
+                            <span class="dropdown-desc">Brainwave Entrainment</span>
+                        </a>
+                    </div>
+                </div>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+            </div>
+        </nav>
+
+        <header class="header">
+            <h1 class="logo">Bilateral Stimulation</h1>
+            <p class="tagline">EMDR & Trauma Processing Tool</p>
+        </header>
+
+        <div class="card">
+            <!-- Visualizer -->
+            <div class="panning-visualizer">
+                <div class="ear-indicator" id="leftEar">L</div>
+                <div class="pan-path">
+                    <div class="pan-dot" id="panDot"></div>
+                </div>
+                <div class="ear-indicator" id="rightEar">R</div>
+            </div>
+
+            <!-- Controls -->
+            <div class="advanced-controls" style="grid-template-columns: 1fr; margin-bottom: 0;">
+                <div class="control-group">
+                    <label class="input-label">Speed (Rate)</label>
+                    <input type="range" id="speedSlider" min="0.1" max="2" step="0.1" value="0.5" class="volume-slider">
+                    <div style="text-align: right; color: var(--text-secondary); font-size: 0.8rem; margin-top: 5px;">
+                        <span id="speedValue">0.5</span> Hz (Alternations per sec)
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="input-label">Tone Pitch</label>
+                    <input type="range" id="toneSlider" min="100" max="1000" step="10" value="200"
+                        class="volume-slider">
+                    <div style="text-align: right; color: var(--text-secondary); font-size: 0.8rem; margin-top: 5px;">
+                        <span id="toneValue">200</span> Hz
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="input-label">Volume</label>
+                    <input type="range" id="volumeSlider" min="0" max="1" step="0.01" value="0.3" class="volume-slider">
+                </div>
+            </div>
+
+            <div class="controls" style="margin-top: 2rem;">
+                <button class="control-btn play-btn" id="playBtn"><span class="btn-icon">▶</span> Start Session</button>
+                <button class="control-btn stop-btn" id="stopBtn" disabled><span class="btn-icon">⬛</span> Stop</button>
+            </div>
+
+            <div class="status" id="status">
+                <span class="status-text">Ready - Headphones Required 🎧</span>
+            </div>
+        </div>
+
+        <main class="knowledge-base">
+            <h2 class="section-title">What is Bilateral Stimulation?</h2>
+            <article class="kb-article">
+                <p>Bilateral stimulation implies stimulating the brain alternately between the left and right
+                    hemispheres. This is a core component of <strong>EMDR (Eye Movement Desensitization and
+                        Reprocessing)</strong>, a therapy used to help people heal from the symptoms and emotional
+                    distress that are the result of disturbing life experiences.</p>
+                <p><strong>How it works:</strong> The rhythmic left-right pattern helps "occupy" the brain's working
+                    memory while you focus on a traumatic memory or stressful thought. This tax on working memory makes
+                    the memory less vivid and emotional, helping you process it more logically.</p>
+                <p><strong>Use Cases:</strong></p>
+                <ul class="kb-list">
+                    <li>Reducing anxiety and panic attacks</li>
+                    <li>Processing traumatic memories</li>
+                    <li>Enhancing deep focus (ADHD)</li>
+                    <li>Promoting relaxation</li>
+                </ul>
+            </article>
+            <a href="/" class="back-link" style="display:block; text-align:center; margin-top:2rem;">← Back to Main
+                Generator</a>
+        </main>
+
+        <footer class="footer">
+            <div class="footer-links">
+                <a href="privacy-policy.html">Privacy Policy</a>
+                <a href="terms.html">Terms of Service</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <p class="copyright">&copy; 2026 Frekuenzy. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Simple inline script for this specific tool to avoid complex app.js merging
+        let audioCtx;
+        let oscillator;
+        let panner;
+        let gainNode;
+        let isPlaying = false;
+        let panInterval;
+        let currentPan = -1; // -1 Left, 1 Right
+
+        const playBtn = document.getElementById('playBtn');
+        const stopBtn = document.getElementById('stopBtn');
+        const speedSlider = document.getElementById('speedSlider');
+        const toneSlider = document.getElementById('toneSlider');
+        const volumeSlider = document.getElementById('volumeSlider');
+
+        const leftEar = document.getElementById('leftEar');
+        const rightEar = document.getElementById('rightEar');
+        const panDot = document.getElementById('panDot');
+
+        // UI Updates
+        speedSlider.addEventListener('input', (e) => document.getElementById('speedValue').textContent = e.target.value);
+        toneSlider.addEventListener('input', (e) => {
+            document.getElementById('toneValue').textContent = e.target.value;
+            if (oscillator) oscillator.frequency.setValueAtTime(e.target.value, audioCtx.currentTime);
+        });
+        volumeSlider.addEventListener('input', (e) => {
+            if (gainNode) gainNode.gain.setValueAtTime(e.target.value, audioCtx.currentTime);
+        });
+
+        playBtn.addEventListener('click', () => {
+            if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+            oscillator = audioCtx.createOscillator();
+            panner = audioCtx.createStereoPanner();
+            gainNode = audioCtx.createGain();
+
+            oscillator.type = 'sine';
+            oscillator.frequency.value = toneSlider.value;
+            gainNode.gain.value = volumeSlider.value;
+
+            oscillator.connect(gainNode);
+            gainNode.connect(panner);
+            panner.connect(audioCtx.destination);
+
+            oscillator.start();
+            isPlaying = true;
+
+            // Update UI
+            playBtn.disabled = true;
+            stopBtn.disabled = false;
+
+            // Start Panning Loop
+            startPanning();
+        });
+
+        stopBtn.addEventListener('click', stop);
+
+        function stop() {
+            if (oscillator) { oscillator.stop(); oscillator.disconnect(); }
+            isPlaying = false;
+            playBtn.disabled = false;
+            stopBtn.disabled = true;
+            cancelAnimationFrame(panReq);
+
+            // Reset Visuals
+            leftEar.classList.remove('active');
+            rightEar.classList.remove('active');
+            panDot.style.left = '50%';
+        }
+
+        let lastTime = 0;
+        let panReq;
+
+        function startPanning() {
+            const speed = parseFloat(speedSlider.value); // Hz
+            const duration = 1000 / speed; // ms per full cycle (L -> R -> L is usually 1 cycle? No, let's say L->R is 1 cycle)
+
+            // Actually, let's use AudioParam automation for smooth panning
+            // But visualizer needs js loop.
+            // Let's keep it simple: We oscillate pan value from -1 to 1 based on sine wave of time
+
+            function animate(time) {
+                if (!isPlaying) return;
+
+                const speedHz = parseFloat(speedSlider.value);
+                // raw sine: sin(2 * PI * freq * time_in_sec)
+                // time is in ms
+                const t = time / 1000;
+                const panVal = Math.sin(2 * Math.PI * speedHz * t);
+
+                if (panner) panner.pan.value = panVal;
+
+                // Visuals
+                // panVal is -1 to 1. Map to 0% to 100%
+                const visualPercent = ((panVal + 1) / 2) * 100;
+                panDot.style.left = visualPercent + '%';
+
+                if (panVal < -0.5) {
+                    leftEar.classList.add('active');
+                    rightEar.classList.remove('active');
+                } else if (panVal > 0.5) {
+                    rightEar.classList.add('active');
+                    leftEar.classList.remove('active');
+                } else {
+                    leftEar.classList.remove('active');
+                    rightEar.classList.remove('active');
+                }
+
+                panReq = requestAnimationFrame(animate);
+            }
+            panReq = requestAnimationFrame(animate);
+        }
+    </script>
+</body>
+
+</html>

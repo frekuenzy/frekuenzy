@@ -146,10 +146,22 @@ function setupEventListeners() {
     });
 
     // Binaural Input
-    binauralInput.addEventListener('input', (e) => {
-        binauralBeatFreq = parseFloat(e.target.value) || 4.0;
-        if (isPlaying && isBinaural) updateOscillators();
-    });
+    if (binauralInput) {
+        binauralInput.addEventListener('input', (e) => {
+            binauralBeatFreq = parseFloat(e.target.value) || 4.0;
+            if (isPlaying && isBinaural) updateOscillators();
+        });
+    }
+
+    // Advanced Toggle
+    const advancedToggle = document.getElementById('advancedToggle');
+    const advancedControls = document.getElementById('advancedControls');
+    if (advancedToggle && advancedControls) {
+        advancedToggle.addEventListener('click', () => {
+            advancedControls.classList.toggle('hidden');
+            advancedToggle.classList.toggle('active');
+        });
+    }
 }
 
 // ===================================

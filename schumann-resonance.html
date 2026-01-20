@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>7.83 Hz Schumann Resonance - Earth's Heartbeat</title>
+    <meta name="description"
+        content="Generate 7.83 Hz Schumann Resonance. Ground yourself with the natural frequency of the Earth.">
+    <meta name="keywords" content="7.83 hz, schumann resonance, grounding, earth frequency">
+    <link rel="stylesheet" href="styles.css">
+    <script>window.addEventListener('DOMContentLoaded', () => { const i = document.getElementById('frequencyInput'); if (i) i.value = 7.83; });</script>
+</head>
+
+<body>
+    <div class="background-gradient"></div>
+    <div class="container">
+        <nav class="nav-bar">
+            <a href="/" class="nav-logo">FREKUENZY</a>
+            <div class="nav-links">
+                <a href="/">Home</a>
+                <div class="nav-item-dropdown">
+                    <button class="dropbtn">Tools ▾</button>
+                    <div class="dropdown-content">
+                        <a href="/">
+                            <span class="dropdown-title">Frequency Generator</span>
+                            <span class="dropdown-desc">Custom Hz & Binaural Beats</span>
+                        </a>
+                        <a href="bilateral.html">
+                            <span class="dropdown-title">Bilateral (EMDR)</span>
+                            <span class="dropdown-desc">Trauma & Anxiety Relief</span>
+                        </a>
+                        <a href="isochronic.html">
+                            <span class="dropdown-title">Isochronic Tones</span>
+                            <span class="dropdown-desc">Brainwave Entrainment</span>
+                        </a>
+                    </div>
+                </div>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+            </div>
+        </nav>
+        <header class="header">
+            <h1 class="logo">7.83 Hz</h1>
+            <p class="tagline">Schumann Resonance</p>
+        </header>
+        <div class="card">
+            <div class="frequency-display">
+                <div class="frequency-value">7.83</div>
+                <div class="frequency-unit">Hz</div>
+            </div>
+            <div class="controls">
+                <button class="control-btn play-btn" id="playBtn">Play 7.83 Hz</button>
+                <button class="control-btn stop-btn" id="stopBtn" disabled>Stop</button>
+            </div>
+            <!-- Hidden elements required by app.js -->
+            <div style="display:none;"><input id="frequencyInput" value="7.83"><input type="range"
+                    id="volumeSlider"><input type="checkbox" id="binauralToggle">
+                <div id="binauralInputGroup"><input id="binauralInput"></div><select id="timerSelect"></select>
+                <div class="preset-buttons"><button class="preset-btn" data-freq="7.83"></button></div>
+                <div class="waveform-selector"><button class="wave-btn active" data-wave="sine"></button></div>
+            </div>
+        </div>
+        <main class="knowledge-base">
+            <h2 class="section-title">Grounding & Healing</h2>
+            <article class="kb-article">
+                <p>7.83 Hz is the fundamental frequency of the Earth's electromagnetic field. Listening to it is helps
+                    with grounding, rejuvenation, and enhanced reading/learning.</p>
+            </article>
+            <a href="/" class="back-link" style="text-align:center;display:block;margin-top:2rem;">← Back</a>
+        </main>
+        <footer class="footer">
+            <div class="footer-links">
+                <a href="privacy-policy.html">Privacy Policy</a>
+                <a href="terms.html">Terms of Service</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <p class="copyright">&copy; 2026 Frekuenzy. All rights reserved.</p>
+        </footer>
+    </div>
+    <script src="app.js"></script>
+</body>
+
+</html>

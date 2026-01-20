@@ -117,6 +117,23 @@
             <a href="/" class="nav-logo">FREKUENZY</a>
             <div class="nav-links">
                 <a href="/" class="active">Home</a>
+                <div class="nav-item-dropdown">
+                    <button class="dropbtn">Tools ▾</button>
+                    <div class="dropdown-content">
+                        <a href="/">
+                            <span class="dropdown-title">Frequency Generator</span>
+                            <span class="dropdown-desc">Custom Hz & Binaural Beats</span>
+                        </a>
+                        <a href="bilateral.html">
+                            <span class="dropdown-title">Bilateral (EMDR)</span>
+                            <span class="dropdown-desc">Trauma & Anxiety Relief</span>
+                        </a>
+                        <a href="isochronic.html">
+                            <span class="dropdown-title">Isochronic Tones</span>
+                            <span class="dropdown-desc">Brainwave Entrainment</span>
+                        </a>
+                    </div>
+                </div>
                 <a href="about.html">About</a>
                 <a href="contact.html">Contact</a>
             </div>
@@ -149,8 +166,14 @@
                 </div>
             </div>
 
-            <!-- Advanced Controls -->
-            <div class="advanced-controls" id="advancedControls">
+            <!-- Advanced Controls Toggle -->
+            <button id="advancedToggle" class="advanced-toggle-btn">
+                <span>⚙️ Advanced Settings</span>
+                <span class="toggle-icon">▼</span>
+            </button>
+
+            <!-- Advanced Controls (Hidden by default) -->
+            <div class="advanced-controls hidden" id="advancedControls">
 
                 <!-- Waveform Selector -->
                 <div class="control-group">
@@ -422,6 +445,26 @@
                 <a href="schumann-resonance.html"
                     style="color: var(--text-secondary); text-decoration: none; padding: 0.5rem; border: 1px solid var(--glass-border); border-radius: 8px; display: block; text-align: center; transition: all 0.2s;">7.83
                     Hz Schumann</a>
+            </div>
+
+            <h3
+                style="color: var(--accent-primary); font-family: var(--font-display); margin-bottom: 1.5rem; margin-top: 2rem;">
+                Advanced Therapy Tools</h3>
+            <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1rem;">
+                <a href="bilateral.html"
+                    style="display: flex; flex-direction: column; align-items: center; text-decoration: none; padding: 1.5rem; background: rgba(255,255,255,0.05); border-radius: 12px; border: 1px solid var(--glass-border); transition: transform 0.2s;">
+                    <span style="font-size: 2rem; margin-bottom: 0.5rem;">🎧</span>
+                    <strong style="color: var(--text-primary); margin-bottom: 0.25rem;">Bilateral Stimulation</strong>
+                    <span style="color: var(--text-secondary); font-size: 0.9rem; text-align: center;">EMDR tool for
+                        trauma & anxiety (Left/Right Audio)</span>
+                </a>
+                <a href="isochronic.html"
+                    style="display: flex; flex-direction: column; align-items: center; text-decoration: none; padding: 1.5rem; background: rgba(255,255,255,0.05); border-radius: 12px; border: 1px solid var(--glass-border); transition: transform 0.2s;">
+                    <span style="font-size: 2rem; margin-bottom: 0.5rem;">🔊</span>
+                    <strong style="color: var(--text-primary); margin-bottom: 0.25rem;">Isochronic Tones</strong>
+                    <span style="color: var(--text-secondary); font-size: 0.9rem; text-align: center;">Brainwave
+                        entrainment without headphones</span>
+                </a>
             </div>
         </section>
 

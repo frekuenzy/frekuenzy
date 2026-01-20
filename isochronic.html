@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Isochronic Tones Generator - Brainwave Entrainment</title>
+    <meta name="title" content="Isochronic Tones Generator - Brainwave Entrainment">
+    <meta name="description"
+        content="Free online Isochronic Tones generator. A powerful brainwave entrainment tool that works without headphones. Generate Alpha, Theta, and Delta pulses for meditation and focus.">
+    <meta name="keywords"
+        content="isochronic tones, brainwave entrainment, rhythmic pulses, meditation tool, focus frequencies, alpha waves, theta waves, no headphones needed">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://frekuenzy.com/isochronic.html">
+
+    <!-- Fonts & Styles -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+        .pulse-visualizer {
+            width: 100px;
+            height: 100px;
+            background: var(--accent-primary);
+            border-radius: 50%;
+            margin: 2rem auto;
+            opacity: 0.2;
+            box-shadow: 0 0 20px var(--accent-primary);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="background-gradient"></div>
+    <div class="container">
+        <nav class="nav-bar">
+            <a href="/" class="nav-logo">FREKUENZY</a>
+            <div class="nav-links">
+                <a href="/">Home</a>
+                <div class="nav-item-dropdown">
+                    <button class="dropbtn">Tools ▾</button>
+                    <div class="dropdown-content">
+                        <a href="/">
+                            <span class="dropdown-title">Frequency Generator</span>
+                            <span class="dropdown-desc">Custom Hz & Binaural Beats</span>
+                        </a>
+                        <a href="bilateral.html">
+                            <span class="dropdown-title">Bilateral (EMDR)</span>
+                            <span class="dropdown-desc">Trauma & Anxiety Relief</span>
+                        </a>
+                        <a href="isochronic.html">
+                            <span class="dropdown-title">Isochronic Tones</span>
+                            <span class="dropdown-desc">Brainwave Entrainment</span>
+                        </a>
+                    </div>
+                </div>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+            </div>
+        </nav>
+
+        <header class="header">
+            <h1 class="logo">Isochronic Tones</h1>
+            <p class="tagline">Brainwave Entrainment (No Headphones Needed)</p>
+        </header>
+
+        <div class="card">
+            <!-- Visualizer -->
+            <div class="pulse-visualizer" id="pulseVis"></div>
+
+            <!-- Controls -->
+            <div class="advanced-controls" style="grid-template-columns: 1fr; margin-bottom: 0;">
+                <div class="control-group">
+                    <label class="input-label">Pulse Speed (Brainwave Frequency)</label>
+                    <input type="range" id="speedSlider" min="1" max="30" step="0.5" value="7.8" class="volume-slider">
+                    <div style="text-align: right; color: var(--text-secondary); font-size: 0.8rem; margin-top: 5px;">
+                        <span id="speedValue">7.8</span> Hz (Pulses per sec)
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="input-label">Carrier Pitch</label>
+                    <input type="range" id="toneSlider" min="100" max="1000" step="10" value="432"
+                        class="volume-slider">
+                    <div style="text-align: right; color: var(--text-secondary); font-size: 0.8rem; margin-top: 5px;">
+                        <span id="toneValue">432</span> Hz
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="input-label">Volume</label>
+                    <input type="range" id="volumeSlider" min="0" max="1" step="0.01" value="0.3" class="volume-slider">
+                </div>
+            </div>
+
+            <div class="controls" style="margin-top: 2rem;">
+                <button class="control-btn play-btn" id="playBtn"><span class="btn-icon">▶</span> Start Pulse</button>
+                <button class="control-btn stop-btn" id="stopBtn" disabled><span class="btn-icon">⬛</span> Stop</button>
+            </div>
+
+            <div class="status" id="status">
+                <span class="status-text">Ready - Works with Speakers 🔊</span>
+            </div>
+        </div>
+
+        <main class="knowledge-base">
+            <h2 class="section-title">What are Isochronic Tones?</h2>
+            <article class="kb-article">
+                <p>Isochronic tones are regular beats of a single tone that are used for <strong>brainwave
+                        entrainment</strong>. Similar to monaural beats, the interference pattern that produces the beat
+                    is outside the brain so headphones are not required.</p>
+                <p><strong>The Mechanism:</strong> Look at a light switch being turned on and off rapidly. Now imagine
+                    this with sound. That rhythmic pulse encourages your brain's electrical activity to sync up with the
+                    rhythm (entrainment).</p>
+                <p><strong>Recommended Settings:</strong></p>
+                <ul class="kb-list">
+                    <li><strong>1-4 Hz (Delta):</strong> Deep sleep.</li>
+                    <li><strong>4-8 Hz (Theta):</strong> Deep meditation (7.8 Hz Schumann Resonance recommended).</li>
+                    <li><strong>8-14 Hz (Alpha):</strong> Relaxation and light focus.</li>
+                    <li><strong>14+ Hz (Beta):</strong> High alert and concentration.</li>
+                </ul>
+            </article>
+            <a href="/" class="back-link" style="display:block; text-align:center; margin-top:2rem;">← Back to Main
+                Generator</a>
+        </main>
+
+        <footer class="footer">
+            <div class="footer-links">
+                <a href="privacy-policy.html">Privacy Policy</a>
+                <a href="terms.html">Terms of Service</a>
+                <a href="contact.html">Contact</a>
+            </div>
+            <p class="copyright">&copy; 2026 Frekuenzy. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        let audioCtx;
+        let oscillator;
+        let pulseOscillator;
+        let masterGain;
+        let pulseGain;
+        let isPlaying = false;
+
+        const playBtn = document.getElementById('playBtn');
+        const stopBtn = document.getElementById('stopBtn');
+        const speedSlider = document.getElementById('speedSlider');
+        const toneSlider = document.getElementById('toneSlider');
+        const volumeSlider = document.getElementById('volumeSlider');
+        const pulseVis = document.getElementById('pulseVis');
+
+        // UI Updates
+        speedSlider.addEventListener('input', (e) => {
+            document.getElementById('speedValue').textContent = e.target.value;
+            if (pulseOscillator) pulseOscillator.frequency.setValueAtTime(e.target.value, audioCtx.currentTime);
+        });
+        toneSlider.addEventListener('input', (e) => {
+            document.getElementById('toneValue').textContent = e.target.value;
+            if (oscillator) oscillator.frequency.setValueAtTime(e.target.value, audioCtx.currentTime);
+        });
+        volumeSlider.addEventListener('input', (e) => {
+            if (masterGain) masterGain.gain.setValueAtTime(e.target.value, audioCtx.currentTime);
+        });
+
+        playBtn.addEventListener('click', () => {
+            if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+            // Implementation: We modulate the gain of the carrier oscillator with a second oscillator (LFO)
+
+            oscillator = audioCtx.createOscillator();
+            oscillator.type = 'sine';
+            oscillator.frequency.value = toneSlider.value;
+
+            // This gain node will be modulated
+            pulseGain = audioCtx.createGain();
+            pulseGain.gain.value = 0.5; // Base gain, LFO will add/subtract or multiply
+
+            // LFO for the pulse
+            pulseOscillator = audioCtx.createOscillator();
+            pulseOscillator.type = 'square'; // Hard on/off for sharp isochronic feel
+            pulseOscillator.frequency.value = speedSlider.value;
+
+            // To make square wave go from 0 to 1 (mute to volume), we need to bias it?
+            // Actually, AudioParam automation is cleaner if we just connect LFO to gain?
+            // But square wave goes -1 to 1. We want 0 to 1.
+            // Easier method: Use a custom script or just square wave controlling gain?
+            // If we connect oscillator to a gain node's .gain property, it adds to the base value.
+            // Let's keep it simple: We use a custom Gain modulation loop or just accept the raw LFO modulation which might clip if not careful.
+
+            // Safer / Better Isochronic Approach:
+            // Main Osc -> GainNode (Vol) -> Destination.
+            // We schedule gain values: 1, 0, 1, 0 based on frequency.
+            // But for real-time slider adjusting, an LFO controlling gain is best.
+            // LFO (Square, 0 to 1) -> Gain. 
+            // To get 0 to 1 from -1 to 1: Add 1, Divide by 2.
+            // We can do this with a Waveshaper or Bias.
+            // Or... just use a constant node?
+
+            // QUICK FIX: use a Gain node connected to the gain.
+
+            masterGain = audioCtx.createGain();
+            masterGain.gain.value = volumeSlider.value;
+
+            // Connecting
+            oscillator.connect(pulseGain);
+            pulseGain.connect(masterGain);
+            masterGain.connect(audioCtx.destination);
+
+            // Create LFO logic implies more nodes. 
+            // Let's strictly use the Square wave to modulate gain.
+            // Since negative gain inverts phase, it effectively is still audible. 
+            // -1 gain * sine = inverted sine (sound!). 0 gain = silence.
+            // So square wave -1 to 1 means: Sound, Sound (inverted). No silence!
+            // We need 0 to 1. 
+            // Workaround: Use a custom PeriodicWave or just simple JS scheduling?
+            // JS scheduling is choppy.
+
+            // Workaround: Square wave LFO connected to gain.
+            // We need to offset it. LFO + Constant(1) -> Gain?
+
+            // Let's use simple JS Visual animation loop to mimic proper pulse for visualization
+
+            oscillator.start();
+
+            // We will handle the PULSE logic via a separate Interval for simplicity in this context 
+            // because pure WebAudio API 0-1 square LFO is verbose without a framework.
+            // BUT, setInterval is inaccurate for audio.
+
+            // OK, native WebAudio solution:
+            // LFO (Square) -> GainNode.gain
+            // But we need to shift the range.
+            // Create a ConstantSourceNode with value 0.5.
+            // Connect LFO (amp 0.5) to it? No.
+
+            // Let's try: Oscillator connects to Gain.
+            // Gain.gain value is automated. 
+            // Actually, square wave -1 to 1:
+            // If we rely on the fact that -1 is just phase inversion, we get a constant tone with phase flips.
+            // We want AMPLITUDE modulation.
+
+            // Let's restart logic:
+            pulseOscillator.start();
+
+            // Connect PulseOsc to a GainNode that controls the MainOsc's gain?
+            // To get 0-1, we need to add 1 to the -1/1 squares, making 0/2, then divide by 2.
+            // We can do this with another GainNode.
+
+            const scaler = audioCtx.createGain();
+            scaler.gain.value = 0.5;
+
+            const shifter = audioCtx.createConstantSource ? audioCtx.createConstantSource() : audioCtx.createOscillator(); // Fallback
+            if (shifter.offset) shifter.offset.value = 0.5;
+            else shifter.start(); // if osc fallback (bad)
+
+            // This is getting complex for a single file tool.
+            // FALLBACK: Use a Triangle wave which creates a tremolo, close enough for "Basic" usage, 
+            // OR use simple JS "mute/unmute" loop? No, that clicks.
+
+            // Let's stick to the Tremolo effect (Sine LFO) which is strictly supported easily.
+            // But User wants Isochronic (Square).
+            // Okay, I will implement a visual pulse and audio pulse via `setValueCurveAtTime` loops? No.
+
+            // SIMPLIFIED ISOCHRONIC (Square LFO):
+            // Main Sound -> Gain
+            // Gain.gain <-- LFO (Square)
+            // *However*, to Silence the -1 part, we can rectify the signal?
+
+            // Let's just use AM (Amplitude Modulation) with a Sine wave (Tremolo). It's therapeutic too.
+            // "Isochronic" strictly implies sharp pulses. 
+            // I'll stick to a standard LFO setup:
+            // Main Osc -> Gain
+            // LFO -> Gain.gain
+            // If LFO is -1 to 1, and Base Gain is 0. 
+            // Result: -1 (Inverted Sound), 1 (Sound).
+            // It SOUNDS like constant sound.
+
+            // Hack: Set Main Osc frequency to 0? No.
+
+            // CORRECT WEB AUDIO WAY for 0-1 Pulse:
+            // LFO -> GainNode(gain=0.5) -> GainNode(gain=1).gain
+            // Plus ConstantSource(0.5) -> GainNode(gain=1).gain
+            // (LFO*0.5) + 0.5 = Range [-0.5, 0.5] + 0.5 = [0, 1]
+
+            const lfoGain = audioCtx.createGain();
+            lfoGain.gain.value = 0.5;
+
+            const constantOne = audioCtx.createConstantSource();
+            constantOne.offset.value = 0.5;
+
+            pulseOscillator.connect(lfoGain);
+            lfoGain.connect(pulseGain.gain);
+
+            constantOne.connect(pulseGain.gain);
+            constantOne.start();
+
+            oscillator.connect(pulseGain); // sound -> pulse gate
+            pulseGain.connect(masterGain); // gate -> volume
+
+            isPlaying = true;
+            playBtn.disabled = true;
+            stopBtn.disabled = false;
+
+            animatePulse();
+        });
+
+        stopBtn.addEventListener('click', () => {
+            if (oscillator) oscillator.stop();
+            if (pulseOscillator) pulseOscillator.stop();
+            isPlaying = false;
+            playBtn.disabled = false;
+            stopBtn.disabled = true;
+            pulseVis.style.opacity = 0.2;
+            cancelAnimationFrame(visReq);
+        });
+
+        let visReq;
+        function animatePulse() {
+            if (!isPlaying) return;
+            const Hz = parseFloat(speedSlider.value);
+            const t = performance.now() / 1000;
+            // Square wave visualisation
+            // sin > 0 ? 1 : 0
+            const val = Math.sin(2 * Math.PI * Hz * t) > 0 ? 1 : 0.2;
+            pulseVis.style.opacity = val;
+            visReq = requestAnimationFrame(animatePulse);
+        }
+    </script>
+</body>
+
+</html>

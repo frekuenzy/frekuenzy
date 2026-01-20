@@ -910,6 +910,7 @@ input[type="number"] {
     appearance: textfield;
     -moz-appearance: textfield;
 }
+
 /* ===================================
    NAVIGATION BAR
    =================================== */
@@ -1023,7 +1024,7 @@ input[type="number"] {
     height: 20px;
 }
 
-.switch input { 
+.switch input {
     opacity: 0;
     width: 0;
     height: 0;
@@ -1051,11 +1052,11 @@ input[type="number"] {
     transition: .4s;
 }
 
-input:checked + .slider {
+input:checked+.slider {
     background-color: var(--accent-secondary);
 }
 
-input:checked + .slider:before {
+input:checked+.slider:before {
     transform: translateX(20px);
 }
 
@@ -1099,6 +1100,7 @@ input:checked + .slider:before {
 /* Volume Slider */
 .volume-slider {
     -webkit-appearance: none;
+    appearance: none;
     width: 100%;
     height: 6px;
     border-radius: 5px;
@@ -1143,6 +1145,7 @@ input:checked + .slider:before {
 /* Mobile Responsiveness for Controls */
 @media (max-width: 600px) {
     .advanced-controls {
-        grid-template-columns: 1fr; /* Stack vertically on mobile */
+        grid-template-columns: 1fr;
+        /* Stack vertically on mobile */
     }
 }

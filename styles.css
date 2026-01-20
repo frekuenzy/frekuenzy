@@ -1341,3 +1341,18 @@ input:checked+.slider:before {
         align-items: center; /* Center text on mobile */
     }
 }
+
+/* Safari/Dropdown Fix: Reset generic nav link styles */
+.dropdown-content a {
+    margin-left: 0 !important; /* Force reset */
+    padding: 12px 20px !important; /* Enforce padding */
+    width: 100%;
+    box-sizing: border-box;
+    text-align: left;
+    align-items: flex-start;
+}
+
+/* Ensure container doesn't get messed up by flex parent */
+.nav-item-dropdown {
+    display: block; /* Flex item behavior */
+}

@@ -12,12 +12,15 @@ let timerInterval = null;
 // ===================================
 // DOM ELEMENTS
 // ===================================
+// ===================================
+// DOM ELEMENTS
+// ===================================
 const frequencyInput = document.getElementById('frequencyInput');
 const frequencyValue = document.getElementById('frequencyValue');
 const playBtn = document.getElementById('playBtn');
 const stopBtn = document.getElementById('stopBtn');
-const status = document.getElementById('status');
-const statusText = status.querySelector('.status-text');
+const statusNode = document.getElementById('status');
+const statusText = statusNode ? statusNode.querySelector('.status-text') : null;
 const waveContainer = document.getElementById('waveContainer');
 const presetButtons = document.querySelectorAll('.preset-btn');
 const waveformButtons = document.querySelectorAll('.wave-btn');
@@ -39,15 +42,20 @@ let currentVolume = 0.3;
 // INITIALIZATION
 // ===================================
 document.addEventListener('DOMContentLoaded', () => {
-    initializeAudioContext();
-    setupEventListeners();
-    updateFrequencyDisplay();
-    checkCookieConsent();
+    try {
+        setupEventListeners();
+        if (frequencyInput) updateFrequencyDisplay();
+        checkCookieConsent();
 
-    // Initialize state from UI
-    currentVolume = parseFloat(volumeSlider.value);
-    isBinaural = binauralToggle.checked;
-    if (isBinaural) binauralInputGroup.classList.remove('hidden');
+        // Initialize state from UI
+        if (volumeSlider) currentVolume = parseFloat(volumeSlider.value);
+        if (binauralToggle) {
+            isBinaural = binauralToggle.checked;
+            if (isBinaural && binauralInputGroup) binauralInputGroup.classList.remove('hidden');
+        }
+    } catch (e) {
+        console.warn('Initialization notice:', e.message);
+    }
 });
 
 // ===================================
@@ -57,23 +65,21 @@ function checkCookieConsent() {
     const banner = document.getElementById('cookieBanner');
     const acceptBtn = document.getElementById('acceptCookiesBtn');
 
-    if (!localStorage.getItem('cookieConsent')) {
-        banner.classList.remove('hidden');
+    if (banner && acceptBtn) {
+        if (!localStorage.getItem('cookieConsent')) {
+            banner.classList.remove('hidden');
+        }
+
+        acceptBtn.addEventListener('click', () => {
+            localStorage.setItem('cookieConsent', 'true');
+            banner.classList.add('hidden');
+        });
     }
-
-    acceptBtn.addEventListener('click', () => {
-        localStorage.setItem('cookieConsent', 'true');
-        banner.classList.add('hidden');
-    });
 }
 
 // ===================================
-// AUDIO CONTEXT INITIALIZATION
+// AUDIO CONTEXT
 // ===================================
-function initializeAudioContext() {
-    // Create AudioContext only when needed (after user interaction)
-}
-
 function createAudioContext() {
     if (!audioContext) {
         audioContext = new (window.AudioContext || window.webkitAudioContext)();
@@ -86,25 +92,29 @@ function createAudioContext() {
 // EVENT LISTENERS
 // ===================================
 function setupEventListeners() {
-    // Frequency input change
-    frequencyInput.addEventListener('input', (e) => {
-        updateFrequencyDisplay();
-        presetButtons.forEach(btn => btn.classList.remove('active'));
-        if (isPlaying) updateOscillators();
-    });
+    // Frequency input
+    if (frequencyInput) {
+        frequencyInput.addEventListener('input', () => {
+            updateFrequencyDisplay();
+            presetButtons.forEach(btn => btn.classList.remove('active'));
+            if (isPlaying) updateOscillators();
+        });
+    }
 
     // Play button
-    playBtn.addEventListener('click', startFrequency);
+    if (playBtn) playBtn.addEventListener('click', startFrequency);
 
     // Stop button
-    stopBtn.addEventListener('click', stopFrequency);
+    if (stopBtn) stopBtn.addEventListener('click', stopFrequency);
 
     // Preset buttons
     presetButtons.forEach(btn => {
         btn.addEventListener('click', () => {
             const freq = btn.getAttribute('data-freq');
-            frequencyInput.value = freq;
-            updateFrequencyDisplay();
+            if (frequencyInput) {
+                frequencyInput.value = freq;
+                updateFrequencyDisplay();
+            }
             presetButtons.forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
             if (isPlaying) updateOscillators();
@@ -122,28 +132,26 @@ function setupEventListeners() {
     });
 
     // Volume Slider
-    volumeSlider.addEventListener('input', (e) => {
-        currentVolume = parseFloat(e.target.value);
-        if (masterGain) {
-            masterGain.gain.cancelScheduledValues(audioContext.currentTime);
-            masterGain.gain.linearRampToValueAtTime(currentVolume, audioContext.currentTime + 0.1);
-        }
-    });
+    if (volumeSlider) {
+        volumeSlider.addEventListener('input', (e) => {
+            currentVolume = parseFloat(e.target.value);
+            if (masterGain && audioContext) {
+                masterGain.gain.cancelScheduledValues(audioContext.currentTime);
+                masterGain.gain.linearRampToValueAtTime(currentVolume, audioContext.currentTime + 0.1);
+            }
+        });
+    }
 
     // Binaural Toggle
-    binauralToggle.addEventListener('change', (e) => {
-        isBinaural = e.target.checked;
-        if (isBinaural) {
-            binauralInputGroup.classList.remove('hidden');
-        } else {
-            binauralInputGroup.classList.add('hidden');
-        }
-        if (isPlaying) {
-            // Restart required to reconfigure nodes roughly or we can update live
-            // Updating live is better but complex. Let's restart for simplicity and stablity
-            startFrequency();
-        }
-    });
+    if (binauralToggle) {
+        binauralToggle.addEventListener('change', (e) => {
+            isBinaural = e.target.checked;
+            if (binauralInputGroup) {
+                isBinaural ? binauralInputGroup.classList.remove('hidden') : binauralInputGroup.classList.add('hidden');
+            }
+            if (isPlaying) startFrequency();
+        });
+    }
 
     // Binaural Input
     if (binauralInput) {
@@ -153,14 +161,17 @@ function setupEventListeners() {
         });
     }
 
-    // Advanced Toggle
+    // Advanced Toggle- Robust for Safari
     const advancedToggle = document.getElementById('advancedToggle');
     const advancedControls = document.getElementById('advancedControls');
     if (advancedToggle && advancedControls) {
-        advancedToggle.addEventListener('click', () => {
+        const toggleHandler = (e) => {
+            // e.preventDefault(); // Remove to allow standard behavior if needed
             advancedControls.classList.toggle('hidden');
             advancedToggle.classList.toggle('active');
-        });
+            console.log('Toggle clicked');
+        };
+        advancedToggle.addEventListener('click', toggleHandler);
     }
 }
 
@@ -168,7 +179,7 @@ function setupEventListeners() {
 // OSCILLATOR CONTROL
 // ===================================
 function updateOscillators() {
-    if (!audioContext) return;
+    if (!audioContext || !frequencyInput) return;
 
     const baseFreq = parseFloat(frequencyInput.value);
     const now = audioContext.currentTime;
@@ -178,28 +189,27 @@ function updateOscillators() {
         oscillatorLeft.type = currentWaveform;
     }
 
-    if (oscillatorRight && isBinaural) {
-        oscillatorRight.frequency.linearRampToValueAtTime(baseFreq + binauralBeatFreq, now + 0.1);
+    if (oscillatorRight) {
+        const targetFreq = isBinaural ? baseFreq + binauralBeatFreq : baseFreq;
+        oscillatorRight.frequency.linearRampToValueAtTime(targetFreq, now + 0.1);
         oscillatorRight.type = currentWaveform;
-    } else if (oscillatorRight && !isBinaural) {
-        // If we switched off binaural while playing, match frequencies or mute right
-        // For simplicity, we just match freq to mono experience
-        oscillatorRight.frequency.linearRampToValueAtTime(baseFreq, now + 0.1);
     }
 }
 
 function startFrequency() {
+    if (!frequencyInput) return;
     const frequency = parseFloat(frequencyInput.value);
 
     // Timer Logic
-    const timerMinutes = parseInt(timerSelect.value);
-    if (timerMinutes > 0) {
+    if (timerSelect) {
+        const timerMinutes = parseInt(timerSelect.value);
         if (timerInterval) clearTimeout(timerInterval);
-        timerInterval = setTimeout(() => {
-            stopFrequency();
-        }, timerMinutes * 60 * 1000);
+        if (timerMinutes > 0) {
+            timerInterval = setTimeout(() => {
+                stopFrequency();
+            }, timerMinutes * 60 * 1000);
+        }
     }
-
 
     if (isPlaying) stopFrequency();
 
@@ -207,41 +217,25 @@ function startFrequency() {
         createAudioContext();
         if (audioContext.state === 'suspended') audioContext.resume();
 
-        // Master Gain
         masterGain = audioContext.createGain();
         masterGain.gain.setValueAtTime(currentVolume, audioContext.currentTime);
         masterGain.connect(audioContext.destination);
 
-        // Implementation:
-        // We use a ChannelMerger to create a stereo signal.
-        // Left Oscillator -> Channel 1
-        // Right Oscillator -> Channel 2
-        // Both -> Merger -> MasterGain -> Destination
-
         const merger = audioContext.createChannelMerger(2);
 
-        // Left Ear
         oscillatorLeft = audioContext.createOscillator();
         oscillatorLeft.type = currentWaveform;
         oscillatorLeft.frequency.setValueAtTime(frequency, audioContext.currentTime);
-        oscillatorLeft.connect(merger, 0, 0); // Connect to left input of merger
+        oscillatorLeft.connect(merger, 0, 0);
 
-        // Right Ear
         oscillatorRight = audioContext.createOscillator();
         oscillatorRight.type = currentWaveform;
-        if (isBinaural) {
-            // Right ear gets Base + Beat Frequency
-            oscillatorRight.frequency.setValueAtTime(frequency + binauralBeatFreq, audioContext.currentTime);
-        } else {
-            // Mono experience: Equal frequency
-            oscillatorRight.frequency.setValueAtTime(frequency, audioContext.currentTime);
-        }
-        oscillatorRight.connect(merger, 0, 1); // Connect to right input of merger
+        const rightFreq = isBinaural ? frequency + binauralBeatFreq : frequency;
+        oscillatorRight.frequency.setValueAtTime(rightFreq, audioContext.currentTime);
+        oscillatorRight.connect(merger, 0, 1);
 
-        // Connect Merger to Master
         merger.connect(masterGain);
 
-        // Start
         oscillatorLeft.start();
         oscillatorRight.start();
 
@@ -249,8 +243,7 @@ function startFrequency() {
         updateUIState(true);
 
     } catch (error) {
-        console.error('Error:', error);
-        alert('Audio error. Please try again.');
+        console.error('Audio Error:', error);
     }
 }
 
@@ -264,7 +257,7 @@ function stopFrequency() {
         oscillatorRight = null;
     }
     if (masterGain) {
-        masterGain.disconnect();
+        try { masterGain.disconnect(); } catch (e) { }
         masterGain = null;
     }
 
@@ -281,39 +274,41 @@ function stopFrequency() {
 // UI UPDATES
 // ===================================
 function updateFrequencyDisplay() {
+    if (!frequencyInput || !frequencyValue) return;
     const freq = parseFloat(frequencyInput.value) || 7.83;
     frequencyValue.textContent = freq.toFixed(2);
 }
 
 function updateUIState(playing) {
     if (playing) {
-        status.classList.add('playing');
-        let text = `Playing: ${parseFloat(frequencyInput.value).toFixed(2)} Hz`;
-        if (isBinaural) text += ` + ${binauralBeatFreq} Hz Beat`;
-        statusText.textContent = text;
+        if (statusNode) statusNode.classList.add('playing');
+        if (statusText && frequencyInput) {
+            let text = `Playing: ${parseFloat(frequencyInput.value).toFixed(2)} Hz`;
+            if (isBinaural) text += ` + ${binauralBeatFreq} Hz Beat`;
+            statusText.textContent = text;
+        }
 
-        playBtn.disabled = true;
-        stopBtn.disabled = false;
-        waveContainer.classList.add('active');
+        if (playBtn) playBtn.disabled = true;
+        if (stopBtn) stopBtn.disabled = false;
+        if (waveContainer) waveContainer.classList.add('active');
     } else {
-        status.classList.remove('playing');
-        statusText.textContent = 'Ready';
+        if (statusNode) statusNode.classList.remove('playing');
+        if (statusText) statusText.textContent = 'Ready';
 
-        playBtn.disabled = false;
-        stopBtn.disabled = true;
-        waveContainer.classList.remove('active');
+        if (playBtn) playBtn.disabled = false;
+        if (stopBtn) stopBtn.disabled = true;
+        if (waveContainer) waveContainer.classList.remove('active');
     }
 }
 
 // ===================================
-// CLEANUP
+// CLEANUP & SHORTCUTS
 // ===================================
 window.addEventListener('beforeunload', () => {
     stopFrequency();
     if (audioContext) audioContext.close();
 });
 
-// Key shortcuts
 document.addEventListener('keydown', (e) => {
     if (e.code === 'Space' && e.target.tagName !== 'INPUT') {
         e.preventDefault();

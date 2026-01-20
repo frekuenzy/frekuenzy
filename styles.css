@@ -1168,6 +1168,8 @@ input:checked+.slider:before {
     align-items: center;
     margin-bottom: var(--spacing-md);
     transition: all 0.2s;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .advanced-toggle-btn:hover {

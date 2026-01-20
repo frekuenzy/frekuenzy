@@ -1185,6 +1185,10 @@ input:checked+.slider:before {
     transform: rotate(180deg);
 }
 
+.advanced-toggle-btn span {
+    pointer-events: none;
+}
+
 /* ===================================
    DROPDOWN MENU
    =================================== */
@@ -1477,23 +1481,74 @@ input:checked+.slider:before {
 
 /* Footer Responsive adjustments */
 @media (max-width: 768px) {
+    .footer {
+        padding: var(--spacing-xl) 1.5rem;
+        background: rgba(16, 8, 30, 0.6);
+    }
+
     .footer-content {
         grid-template-columns: 1fr;
-        /* Stack vertically */
-        gap: var(--spacing-lg);
+        gap: var(--spacing-xl);
         text-align: center;
     }
 
     .footer-desc {
-        margin: 0 auto;
+        margin: 0 auto 1.5rem;
+        font-size: 0.9rem;
+        color: var(--text-secondary);
+        max-width: 100%;
+        line-height: 1.6;
+    }
+
+    .footer-section {
+        padding-bottom: var(--spacing-lg);
+        margin-bottom: var(--spacing-lg);
+        border-bottom: 1px solid rgba(0, 255, 255, 0.1);
+    }
+
+    .footer-section:last-of-type {
+        border-bottom: none;
+        margin-bottom: 0;
+        padding-bottom: 0;
+    }
+
+    .footer-title {
+        font-size: 1.1rem;
+        color: var(--accent-primary);
+        margin-bottom: var(--spacing-md);
+        text-transform: uppercase;
+        letter-spacing: 0.15em;
+        font-weight: 700;
+        text-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+    }
+
+    .footer-nav {
+        gap: 1rem;
+        align-items: center;
     }
 
     .footer-link {
         width: 100%;
-        /* Full width for easier tapping */
+        max-width: 250px;
+        padding: 0.5rem;
+        color: var(--text-primary);
+        font-size: 1rem;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid var(--glass-border);
+        border-radius: 8px;
+        transition: all 0.3s ease;
     }
 
-    .footer-link:hover {
-        transform: none;
+    .footer-link:active,
+    .footer-link.active {
+        background: rgba(0, 255, 255, 0.1);
+        border-color: var(--accent-primary);
+        color: var(--accent-primary);
+        transform: scale(0.98);
+    }
+
+    .footer-bottom {
+        margin-top: var(--spacing-lg);
+        border-top: none;
     }
 }

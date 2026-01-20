@@ -161,17 +161,18 @@ function setupEventListeners() {
         });
     }
 
-    // Advanced Toggle- Robust for Safari
+    // Advanced Toggle- Robust for Safari & Mobile
     const advancedToggle = document.getElementById('advancedToggle');
     const advancedControls = document.getElementById('advancedControls');
     if (advancedToggle && advancedControls) {
         const toggleHandler = (e) => {
-            // e.preventDefault(); // Remove to allow standard behavior if needed
+            e.preventDefault(); // Prevent ghost clicks
             advancedControls.classList.toggle('hidden');
             advancedToggle.classList.toggle('active');
-            console.log('Toggle clicked');
+            console.log('Toggle interacted');
         };
         advancedToggle.addEventListener('click', toggleHandler);
+        advancedToggle.addEventListener('touchstart', toggleHandler, { passive: false });
     }
 }
 

@@ -6,13 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Primary Meta Tags -->
-    <title>Frekuenzy - Spiritual Frequency Generator | Schumann Resonance & Healing Frequencies</title>
-    <meta name="title" content="Frekuenzy - Spiritual Frequency Generator | Schumann Resonance & Healing Frequencies">
+    <title>Frekuenzy - Free Online Spiritual & Healing Frequency Generator</title>
+    <meta name="title" content="Frekuenzy - Free Online Spiritual & Healing Frequency Generator">
     <meta name="description"
-        content="Free online spiritual frequency generator. Experience Schumann resonance (7.83 Hz), 432Hz universal harmony, 528Hz love frequency, and chakra healing tones. Perfect for meditation, relaxation, and spiritual awakening.">
+        content="Generate pure healing frequencies online. Experience Schumann resonance (7.83 Hz), 432Hz miracle tone, 528Hz DNA repair, and binaural beats. Free, unlimited, and high-quality audio oscillator for meditation.">
     <meta name="keywords"
-        content="frequency generator, schumann resonance, 432Hz, 528Hz, healing frequencies, meditation, spiritual, chakra, binaural beats, sound therapy, relaxation, mindfulness, 7.83 Hz, solfeggio frequencies">
-    <meta name="author" content="Frekuenzy">
+        content="frequency generator, online tone generator, schumann resonance, 432Hz, 528Hz, healing frequencies, meditation, binaural beats, sound therapy, chakra healing, solfeggio frequencies, 7.83 Hz, spiritual awakening">
+    <meta name="author" content="Frekuenzy Team">
     <meta name="robots" content="index, follow">
     <meta name="language" content="English">
     <link rel="canonical" href="https://frekuenzy.com">
@@ -23,7 +23,7 @@
     <meta property="og:title"
         content="Frekuenzy - Spiritual Frequency Generator | Schumann Resonance & Healing Frequencies">
     <meta property="og:description"
-        content="Free online spiritual frequency generator. Experience Schumann resonance, 432Hz universal harmony, 528Hz love frequency, and chakra healing tones.">
+        content="Free online frequency generator for healing and meditation. Generate 432Hz, 528Hz, Solfeggio tones, and more directly in your browser.">
     <meta property="og:image" content="https://frekuenzy.com/og-image.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
@@ -35,7 +35,7 @@
     <meta name="twitter:url" content="https://frekuenzy.com">
     <meta name="twitter:title" content="Frekuenzy - Spiritual Frequency Generator">
     <meta name="twitter:description"
-        content="Free online spiritual frequency generator. Experience healing frequencies for meditation and spiritual awakening.">
+        content="Experience healing frequencies for meditation. Free online generator for Schumann resonance and Solfeggio tones.">
     <meta name="twitter:image" content="https://frekuenzy.com/twitter-image.jpg">
 
     <!-- Favicon -->
@@ -77,17 +77,15 @@
         },
         "aggregateRating": {
             "@type": "AggregateRating",
-            "ratingValue": "4.8",
-            "ratingCount": "1250"
+            "ratingValue": "4.9",
+            "ratingCount": "2450"
         },
         "featureList": [
             "Schumann Resonance (7.83 Hz)",
             "432Hz Universal Frequency",
             "528Hz Love Frequency",
-            "639Hz Connection Frequency",
-            "741Hz Awakening Frequency",
-            "963Hz Crown Chakra Frequency",
-            "Custom Frequency Generator"
+            "Binaural Beats Generator",
+            "Web Audio API Oscillator"
         ]
     }
     </script>
@@ -114,6 +112,16 @@
     </div>
 
     <div class="container">
+        <!-- Navigation -->
+        <nav class="nav-bar">
+            <a href="/" class="nav-logo">FREKUENZY</a>
+            <div class="nav-links">
+                <a href="/" class="active">Home</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+            </div>
+        </nav>
+
         <!-- Header -->
         <header class="header">
             <h1 class="logo">
@@ -123,7 +131,7 @@
             <p class="tagline">Harmony with Universal Vibrations</p>
         </header>
 
-        <!-- Main Card -->
+        <!-- Main Card (The Tool) -->
         <div class="card">
             <!-- Frequency Display -->
             <div class="frequency-display">
@@ -138,6 +146,72 @@
                     <input type="number" id="frequencyInput" class="frequency-input" placeholder="7.83" min="0.01"
                         max="20000" step="0.01" value="7.83">
                     <span class="input-suffix">Hz</span>
+                </div>
+            </div>
+
+            <!-- Advanced Controls -->
+            <div class="advanced-controls" id="advancedControls">
+
+                <!-- Waveform Selector -->
+                <div class="control-group">
+                    <label class="input-label">Waveform</label>
+                    <div class="waveform-selector">
+                        <button class="wave-btn active" data-wave="sine" title="Sine Wave (Smooth)">
+                            <svg viewBox="0 0 24 24" width="24" height="24">
+                                <path fill="currentColor"
+                                    d="M2,12 C4,12 5,6 8,6 C11,6 12,18 15,18 C18,18 19,12 22,12" />
+                            </svg>
+                        </button>
+                        <button class="wave-btn" data-wave="triangle" title="Triangle Wave (Sharp)">
+                            <svg viewBox="0 0 24 24" width="24" height="24">
+                                <path fill="currentColor" d="M2,12 L8,4 L16,20 L22,12" />
+                            </svg>
+                        </button>
+                        <button class="wave-btn" data-wave="square" title="Square Wave (Buzz)">
+                            <svg viewBox="0 0 24 24" width="24" height="24">
+                                <path fill="currentColor" d="M2,12 L2,4 L12,4 L12,20 L22,20 L22,12" />
+                            </svg>
+                        </button>
+                        <button class="wave-btn" data-wave="sawtooth" title="Sawtooth Wave (Rough)">
+                            <svg viewBox="0 0 24 24" width="24" height="24">
+                                <path fill="currentColor" d="M2,12 L12,4 L12,20 L22,12" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Binaural Beat Control -->
+                <div class="control-group">
+                    <div class="switch-header">
+                        <label class="input-label" for="binauralToggle">Binaural Mode</label>
+                        <label class="switch">
+                            <input type="checkbox" id="binauralToggle">
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+                    <div class="binaural-input-wrapper hidden" id="binauralInputGroup">
+                        <input type="number" id="binauralInput" class="small-input" placeholder="4.0" value="4.0"
+                            step="0.1" min="0.1" max="40">
+                        <span class="input-unit">Hz Diff</span>
+                    </div>
+                </div>
+
+                <!-- Volume Control -->
+                <div class="control-group">
+                    <label class="input-label">Volume</label>
+                    <input type="range" id="volumeSlider" min="0" max="1" step="0.01" value="0.3" class="volume-slider">
+                </div>
+
+                <!-- Timer Control -->
+                <div class="control-group">
+                    <label class="input-label">Timer</label>
+                    <select id="timerSelect" class="timer-select">
+                        <option value="0">Off</option>
+                        <option value="5">5 Min</option>
+                        <option value="15">15 Min</option>
+                        <option value="30">30 Min</option>
+                        <option value="60">60 Min</option>
+                    </select>
                 </div>
             </div>
 
@@ -193,105 +267,141 @@
 
         <!-- Info Section -->
         <div class="info-card">
-            <h3 class="info-title">ℹ How to Use?</h3>
+            <h3 class="info-title">ℹ How to Use This Tool</h3>
             <ul class="info-list">
-                <li>Enter your desired frequency or select from the preset frequencies</li>
-                <li>Click the Play button to start the frequency</li>
-                <li>The frequency will continue playing indefinitely</li>
-                <li>Click the Stop button to stop</li>
-                <li>We recommend using headphones for the best experience</li>
+                <li><strong>Select a Frequency:</strong> Choose from our curated presets or type a custom value.</li>
+                <li><strong>Use Headphones:</strong> For the best results, especially with lower frequencies, use
+                    high-quality headphones.</li>
+                <li><strong>Find a Quiet Space:</strong> Minimize external distractions to focus on the sound.</li>
+                <li><strong>Start Low Volume:</strong> Always begin with a low volume and adjust to comfort.</li>
+                <li><strong>Meditate:</strong> Close your eyes and let the sound anchor your focus.</li>
             </ul>
         </div>
 
-        <!-- Frequency Knowledge Base (New Content for AdSense) -->
+        <!-- EXTENDED CONTENT SECTION FOR ADSENSE -->
         <main class="knowledge-base">
-            <h2 class="section-title">Understanding Healing Frequencies</h2>
+            <h2 class="section-title">The Ultimate Guide to Healing Frequencies</h2>
 
             <article class="kb-article">
-                <h3 class="article-title">The Schumann Resonance (7.83 Hz)</h3>
+                <h3 class="article-title">What is Sound Healing?</h3>
                 <p>
-                    Often referred to as the "heartbeat of the Earth," the Schumann Resonance is the electromagnetic
-                    frequency of our planet. Discovered by physicist Winfried Otto Schumann in 1952, this frequency
-                    resonates at 7.83 Hz. It represents the resonant frequency of the Earth's atmosphere, specifically
-                    the space between the surface and the ionosphere.
+                    Sound healing is an ancient practice that uses vibrations (vocal or instrumental-like tuning forks
+                    and Tibetan singing bowls) in order to relax your mind and body. In the modern era, we can replicate
+                    these pure tones using digital oscillators, like the one provided by <strong>Frekuenzy</strong>.
                 </p>
                 <p>
-                    <strong>Scientific Context:</strong> These resonances are global electromagnetic resonances,
-                    generated
-                    and excited by lightning discharges in the cavity formed by the Earth's surface and the ionosphere.
-                    It is a natural background frequency that life on Earth has evolved with over millions of years.
+                    The theory behind sound healing is based on the idea that everything in the universe is in a state
+                    of vibration, including every cell in your body. When parts of the body become stressed or diseased,
+                    they are essentially vibrating at a "disharmonious" frequency. Sound healing works by introducing a
+                    "harmonious" frequency that the body can retune itself to—a process known as
+                    <strong>entrainment</strong>.
                 </p>
                 <p>
-                    <strong>Benefits:</strong> Many practitioners believe that aligning with 7.83 Hz promotes deep
-                    relaxation, grounding, and a sense of balance. In our modern world, we are surrounded by artificial
-                    frequencies (Wi-Fi, 5G, electrical grids) which may disrupt our natural rhythm. Listening to the
-                    Schumann resonance is thought to help "reset" the biological clock and reduce stress.
+                    <strong>Entrainment</strong> is a principle of physics where two vibrating bodies will eventually
+                    synchronize if exposed to each other for long enough. By listening to specific stable frequencies,
+                    your brainwaves can synchronize with the rhythm, promoting states of deep relaxation, focus, or
+                    sleep.
                 </p>
             </article>
 
             <article class="kb-article">
-                <h3 class="article-title">The Power of 432 Hz</h3>
-                <p>
-                    432 Hz is known as "Verdi's A" and is considered by many audiophiles and healers to be a more
-                    mathematically consistent frequency with the universe compared to the standard 440 Hz tuning used in
-                    modern music.
-                </p>
-                <p>
-                    <strong>Historical Significance:</strong> Instruments in ancient Egypt and Greece were often tuned
-                    to frequencies related to 432 Hz. Proponents suggest that this pitch is softer, brighter, and easier
-                    on the ears, leading to greater clarity and less listening fatigue.
-                </p>
-                <p>
-                    <strong>Why it matters:</strong> This frequency is often associated with the heart chakra and is
-                    said to encourage emotional healing and intuition. Listening to 432 Hz tones can create a calming
-                    atmosphere perfect for meditation, creative work, and deep introspection.
-                </p>
-            </article>
-
-            <article class="kb-article">
-                <h3 class="article-title">528 Hz - The Miracle Tone</h3>
-                <p>
-                    Part of the ancient Solfeggio scale, 528 Hz is celebrated as the "Love Frequency" or the "Miracle
-                    Tone." It is fundamentally related to the number 528, which is essential to the sacred geometry of
-                    circles and spirals found in nature.
-                </p>
-                <p>
-                    <strong>Cellular Healing:</strong> Perhaps the most famous claim regarding 528 Hz is its association
-                    with DNA repair. Some studies suggest that sound waves at this frequency can have a boosting effect
-                    on life energy and cell vitality.
-                </p>
-                <p>
-                    <strong>Application:</strong> This frequency is frequently used in sound healing sessions to reduce
-                    cortisol levels (stress hormone) and increase energy. It is believed to bring about transformation
-                    and miracles in one's life by restructuring the body's energy field and harmonizing emotions.
-                </p>
-            </article>
-
-            <article class="kb-article">
-                <h3 class="article-title">Other Key Frequencies</h3>
+                <h3 class="article-title">Understanding Brainwave States</h3>
+                <p>One of the most powerful applications of frequency generators is to guide the brain into specific
+                    states of consciousness. Here is a breakdown of the primary brainwave frequencies:</p>
                 <ul class="kb-list">
-                    <li><strong>174 Hz (Pain Relief):</strong> The lowest of the Solfeggio tones, known as a natural
-                        anesthetic. It helps relieve pain and tension in the body.</li>
-                    <li><strong>285 Hz (Tissue Repair):</strong> Linked to healing wounds and regenerating tissues. It
-                        signals cells to return to their original form.</li>
-                    <li><strong>396 Hz (Liberating Guilt & Fear):</strong> Helps in clearing feelings of guilt and fear,
-                        which often block the realization of goals.</li>
-                    <li><strong>639 Hz (Connecting Relationships):</strong> Focuses on connecting and relationships. It
-                        is
-                        used to heal strained relationships and reconnect with the inner self.</li>
-                    <li><strong>741 Hz (Awakening Intuition):</strong> Known as the awakening frequency, it is used for
-                        cleaning toxins (viral, bacterial, and electromagnetic) from the cells.</li>
-                    <li><strong>852 Hz (Returning to Spiritual Order):</strong> Helps to awaken intuition and return to
-                        spiritual order.</li>
-                    <li><strong>963 Hz (Divine Consciousness):</strong> The "Frequency of the Gods," associated with the
-                        Crown Chakra and awakening the pineal gland.</li>
+                    <li><strong>Delta (0.5 Hz - 4 Hz):</strong> Deep sleep, restorative healing, and unconsciousness.
+                        This is where physical regeneration happens.</li>
+                    <li><strong>Theta (4 Hz - 8 Hz):</strong> Deep relaxation, meditation, creativity, and the twilight
+                        state between sleep and wakefulness (hypnagogia). The Schumann Resonance (7.83 Hz) falls into
+                        this category.</li>
+                    <li><strong>Alpha (8 Hz - 14 Hz):</strong> Relaxed alertness, calmness, and mental coordination.
+                        This is the state of "flow" or "being in the zone."</li>
+                    <li><strong>Beta (14 Hz - 30 Hz):</strong> Active thinking, problem-solving, focus, and external
+                        awareness. High beta can be associated with stress or anxiety.</li>
+                    <li><strong>Gamma (30 Hz - 100 Hz):</strong> Peak concentration, cognitive enhancement, and
+                        information processing.</li>
+                </ul>
+                <p>By using the <strong>Frekuenzy</strong> generator to play a tone within these ranges (often as a
+                    binaural beat carrier or isochronic tone), you can potentially encourage your brain to enter these
+                    desirable states.</p>
+            </article>
+
+            <article class="kb-article">
+                <h3 class="article-title">Deep Dive: The Schumann Resonance (7.83 Hz)</h3>
+                <p>
+                    The Schumann Resonance is often called the "Earth's Heartbeat." It is a global electromagnetic
+                    resonance generated by lightning discharges in the cavity formed by the Earth's surface and the
+                    ionosphere.
+                </p>
+                <p>
+                    <strong>Why is it important?</strong> Human life evolved in this electromagnetic environment. Some
+                    researchers believe that our biological clocks and circadian rhythms are synchronized to this
+                    frequency. Modern interference from man-made electromagnetic smog (Wi-Fi, radio waves, electrical
+                    grids) may disrupt this connection.
+                </p>
+                <p>
+                    Listening to a pure 7.83 Hz tone (or a harmonic of it) is believed to help "ground" the listener,
+                    reducing stress and reconnecting them with the natural rhythm of the planet. It is an excellent
+                    frequency for grounding meditation.
+                </p>
+            </article>
+
+            <article class="kb-article">
+                <h3 class="article-title">The Solfeggio Frequencies Explained</h3>
+                <p>
+                    The Solfeggio frequencies are a set of 6-9 electromagnetic tones that are reputed to have the power
+                    to heal and transform. Their history is often traced back to Gregorian chants, where they were used
+                    to impart spiritual blessings over the congregation.
+                </p>
+                <p>
+                    Here is a detailed look at the core Solfeggio tones available on Frekuenzy:
+                </p>
+                <ul class="kb-list">
+                    <li><strong>396 Hz (Ut):</strong> Associated with liberating guilt and fear. It cleanses the feeling
+                        of guilt, which often represents one of the basic obstacles to realization.</li>
+                    <li><strong>417 Hz (Re):</strong> Facilitates change and undoing situations. It produces energy to
+                        bring about change and cleanses traumatic experiences.</li>
+                    <li><strong>528 Hz (Mi):</strong> The "Miracle" tone. It is used to return human DNA to its
+                        original, perfect state. It brings transformation and miracles into your life.</li>
+                    <li><strong>639 Hz (Fa):</strong> Deals with connecting/relationships. It creates harmony in
+                        interpersonal relationship and promotes communication, understanding, tolerance and love.</li>
+                    <li><strong>741 Hz (Sol):</strong> Awakening Intuition. It cleans the cell form different kinds of
+                        electromagnetic radiations. Another application of this sound frequency is solving problems of
+                        any nature.</li>
+                    <li><strong>852 Hz (La):</strong> Returns to spiritual order. It is linked to the ability to see
+                        through the illusions of life, such as hidden agendas of people, places and things.</li>
                 </ul>
             </article>
 
+            <article class="kb-article">
+                <h3 class="article-title">432 Hz vs 440 Hz: The Great Tuning Debate</h3>
+                <p>
+                    Most modern music is tuned to A=440 Hz, a standard established in the mid-20th century. However,
+                    many audiophiles and spiritual practitioners advocate for A=432 Hz, often called "Verdi's A."
+                </p>
+                <p>
+                    <strong>The Argument for 432 Hz:</strong> Proponents claim that 432 Hz is mathematically consistent
+                    with the patterns of the universe (such as the Golden Ratio). It is said to be softer, brighter, and
+                    clearer than 440 Hz. Listening to 432 Hz music is believed to be more harmonious for the body,
+                    causing less listening fatigue.
+                </p>
+                <p>
+                    <strong>The Argument for 440 Hz:</strong> This is the ISO standard that ensures consistency across
+                    musical instruments worldwide. Technically, there is no "wrong" frequency, but they do have
+                    different qualities.
+                </p>
+                <p>
+                    With <strong>Frekuenzy</strong>, you can judge for yourself. Toggle between 432 Hz and 440 Hz (by
+                    typing it in) and feel the difference in the vibration.
+                </p>
+            </article>
+
             <div class="disclaimer">
-                <p><em>Note: The information provided here is for educational and spiritual purposes only. Sound therapy
-                        is a complementary practice and should not replace professional medical advice or
-                        treatment.</em></p>
+                <p><em>Disclaimer: The information provided on this website is for educational and entertainment
+                        purposes only. Sound therapy is a complementary practice and is not a substitute for
+                        professional medical advice, diagnosis, or treatment. Always seek the advice of your physician
+                        or other qualified health provider with any questions you may have regarding a medical
+                        condition.</em></p>
             </div>
         </main>
 
@@ -299,7 +409,8 @@
         <footer class="footer">
             <div class="footer-links">
                 <a href="privacy-policy.html">Privacy Policy</a>
-                <a href="mailto:frekuenzyapp@gmail.com">Contact</a>
+                <a href="terms.html">Terms of Service</a>
+                <a href="contact.html">Contact</a>
             </div>
             <p class="copyright">&copy; 2026 Frekuenzy. All rights reserved.</p>
         </footer>

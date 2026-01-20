@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>528 Hz Frequency Generator - The Miracle Tone for DNA Repair</title>
+    <meta name="title" content="528 Hz Frequency Generator - The Miracle Tone for DNA Repair">
+    <meta name="description"
+        content="Play 528 Hz pure tone online. Known as the 'Love Frequency' or 'Miracle Tone', 528Hz is believed to repair DNA and bring positive transformation. Free instant playback.">
+    <meta name="keywords"
+        content="528 hz frequency, 528 hz generator, miracle tone, love frequency, dna repair frequency, solfeggio 528, healing tone">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://frekuenzy.com/528hz.html">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="528 Hz Frequency Generator | The Miracle Tone">
+    <meta property="og:description" content="Generate pure 528 Hz healing frequency instantly.">
+    <meta property="og:url" content="https://frekuenzy.com/528hz.html">
+    <meta property="og:type" content="website">
+
+    <!-- Fonts & Styles -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Pre-load 528 Hz Logic -->
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            // Set input to 528 on load
+            const input = document.getElementById('frequencyInput');
+            if (input) input.value = 528;
+
+            // Highlight 528 button
+            const btn = document.querySelector('.preset-btn[data-freq="528"]');
+            if (btn) btn.classList.add('active');
+        });
+    </script>
+</head>
+
+<body>
+    <div class="background-gradient"></div>
+    <div class="wave-container" id="waveContainer">
+        <div class="wave wave1"></div>
+        <div class="wave wave2"></div>
+        <div class="wave wave3"></div>
+    </div>
+
+    <div class="container">
+        <nav class="nav-bar">
+            <a href="/" class="nav-logo">FREKUENZY</a>
+            <div class="nav-links">
+                <a href="/">Home</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+            </div>
+        </nav>
+
+        <header class="header">
+            <h1 class="logo">528 Hz</h1>
+            <p class="tagline">The Miracle Tone & Love Frequency</p>
+        </header>
+
+        <!-- Player Card Reused -->
+        <div class="card">
+            <div class="frequency-display">
+                <div class="frequency-value" id="frequencyValue">528.00</div>
+                <div class="frequency-unit">Hz</div>
+            </div>
+
+            <div class="input-group">
+                <div class="input-wrapper">
+                    <input type="number" id="frequencyInput" class="frequency-input" value="528" readonly>
+                    <span class="input-suffix">Hz</span>
+                </div>
+            </div>
+
+            <div class="controls">
+                <button class="control-btn play-btn" id="playBtn"><span class="btn-icon">▶</span> Play 528 Hz</button>
+                <button class="control-btn stop-btn" id="stopBtn" disabled><span class="btn-icon">⬛</span> Stop</button>
+            </div>
+
+            <div class="status" id="status">
+                <div class="status-dot"></div>
+                <span class="status-text">Ready</span>
+            </div>
+
+            <!-- Hidden elements required by app.js to not crash -->
+            <div style="display:none;">
+                <input type="range" id="volumeSlider" value="0.3">
+                <input type="checkbox" id="binauralToggle">
+                <div id="binauralInputGroup"><input id="binauralInput"></div>
+                <select id="timerSelect">
+                    <option value="0"></option>
+                </select>
+                <div class="preset-buttons">
+                    <button class="preset-btn" data-freq="528"></button>
+                </div>
+                <div class="waveform-selector">
+                    <button class="wave-btn active" data-wave="sine"></button>
+                </div>
+            </div>
+        </div>
+
+        <main class="knowledge-base">
+            <h2 class="section-title">Why Listen to 528 Hz?</h2>
+            <article class="kb-article">
+                <h3 class="article-title">The Science & Spirituality of 528 Hz</h3>
+                <p>528 Hz is known as the "Miracle" note of the original Solfeggio musical scale. Independent
+                    researchers have suggested that this frequency is used by DNA repair biochemists.</p>
+                <p><strong>Benefits often reported:</strong></p>
+                <ul class="kb-list">
+                    <li>Increased energy and clarity of mind</li>
+                    <li>Deep stress relief</li>
+                    <li>Activated creativity</li>
+                    <li>Inner peace and spiritual connection</li>
+                </ul>
+            </article>
+
+            <a href="/" class="back-link" style="display:block; text-align:center; margin-top:2rem;">← Back to All
+                Frequencies</a>
+        </main>
+
+        <footer class="footer">
+            <p class="copyright">&copy; 2026 Frekuenzy. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <!-- Simplified script for specific page -->
+    <script src="app.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>432 Hz Frequency - The Universal Frequency of Peace</title>
+    <meta name="title" content="432 Hz Frequency - The Universal Frequency of Peace">
+    <meta name="description"
+        content="Generate pure 432 Hz tone online. Discover why 432Hz is considered the mathematical tuning of the universe. Enhance meditation and reduce anxiety.">
+    <meta name="keywords"
+        content="432 hz, 432hz frequency, universal frequency, verdi's a, healing frequency, meditation tone">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://frekuenzy.com/432hz.html">
+
+    <!-- Fonts & Styles -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            const input = document.getElementById('frequencyInput');
+            if (input) input.value = 432;
+        });
+    </script>
+</head>
+
+<body>
+    <div class="background-gradient"></div>
+    <div class="wave-container" id="waveContainer">
+        <div class="wave wave1"></div>
+        <div class="wave wave2"></div>
+        <div class="wave wave3"></div>
+    </div>
+
+    <div class="container">
+        <nav class="nav-bar">
+            <a href="/" class="nav-logo">FREKUENZY</a>
+            <div class="nav-links">
+                <a href="/">Home</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+            </div>
+        </nav>
+
+        <header class="header">
+            <h1 class="logo">432 Hz</h1>
+            <p class="tagline">Universal Harmony & Cosmic Tuning</p>
+        </header>
+
+        <div class="card">
+            <div class="frequency-display">
+                <div class="frequency-value" id="frequencyValue">432.00</div>
+                <div class="frequency-unit">Hz</div>
+            </div>
+
+            <div class="input-group">
+                <div class="input-wrapper">
+                    <input type="number" id="frequencyInput" class="frequency-input" value="432" readonly>
+                    <span class="input-suffix">Hz</span>
+                </div>
+            </div>
+
+            <div class="controls">
+                <button class="control-btn play-btn" id="playBtn"><span class="btn-icon">▶</span> Play 432 Hz</button>
+                <button class="control-btn stop-btn" id="stopBtn" disabled><span class="btn-icon">⬛</span> Stop</button>
+            </div>
+
+            <div class="status" id="status">
+                <div class="status-dot"></div>
+                <span class="status-text">Ready</span>
+            </div>
+            <!-- Hidden elements required by app.js -->
+            <div style="display:none;">
+                <input type="range" id="volumeSlider" value="0.3">
+                <input type="checkbox" id="binauralToggle">
+                <div id="binauralInputGroup"><input id="binauralInput"></div>
+                <select id="timerSelect">
+                    <option value="0"></option>
+                </select>
+                <div class="preset-buttons"><button class="preset-btn" data-freq="432"></button></div>
+                <div class="waveform-selector"><button class="wave-btn active" data-wave="sine"></button></div>
+            </div>
+        </div>
+
+        <main class="knowledge-base">
+            <h2 class="section-title">The Magic of 432 Hz</h2>
+            <article class="kb-article">
+                <h3 class="article-title">Why 432 Hz instead of 440 Hz?</h3>
+                <p>Standard music is tuned to 440 Hz. However, 432 Hz is said to be mathematically consistent with the
+                    universe. It is softer, warmer, and brighter, providing better clarity and being easier on the ears.
+                </p>
+                <p>Listening to 432 Hz music releases emotional blockages and expands consciousness. It allows you to
+                    tune into the wisdom of the Universe, Divine Intelligence, and your Soul.</p>
+            </article>
+            <a href="/" class="back-link" style="display:block; text-align:center; margin-top:2rem;">← Back to All
+                Frequencies</a>
+        </main>
+
+        <footer class="footer">
+            <p class="copyright">&copy; 2026 Frekuenzy. All rights reserved.</p>
+        </footer>
+    </div>
+    <script src="app.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Craving Disruptor - Behavioral Addiction Relief | Frekuenzy</title>
+    <meta name="title" content="Craving Disruptor - Free Addiction & Craving Relief Tool">
+    <meta name="description"
+        content="Free online tool to disrupt cravings for smoking, gambling, and behavioral addictions. Uses targeted healing frequencies, theta waves, and bilateral stimulation.">
+    <meta name="keywords"
+        content="quit smoking frequency, gambling addiction help, craving disruptor, 528hz addiction, theta waves addiction, bilateral stimulation craving">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://frekuenzy.com/craving-disruptor.html">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://frekuenzy.com/craving-disruptor.html">
+    <meta property="og:title" content="Craving Disruptor - Addiction Relief Tool | Frekuenzy">
+    <meta property="og:description"
+        content="Disrupt craving loops with targeted frequencies and bilateral stimulation. Free tool for behavioral addiction recovery.">
+    <meta property="og:image" content="https://frekuenzy.com/apple-touch-icon.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://frekuenzy.com/craving-disruptor.html">
+    <meta property="twitter:title" content="Craving Disruptor - Addiction Relief Tool | Frekuenzy">
+    <meta property="twitter:description"
+        content="Disrupt craving loops with targeted frequencies and bilateral stimulation. Free tool for behavioral addiction recovery.">
+    <meta property="twitter:image" content="https://frekuenzy.com/apple-touch-icon.png">
+
+    <!-- Fonts & Styles -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css?v=1.2">
+
+    <style>
+        .panning-visualizer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 40px;
+            margin: 1.5rem 0;
+            padding: 0 1rem;
+            position: relative;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 20px;
+        }
+
+        .ear-indicator {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            color: var(--text-secondary);
+            transition: all 0.1s;
+        }
+
+        .ear-indicator.active {
+            background: var(--accent-primary);
+            color: var(--bg-dark);
+            box-shadow: 0 0 10px var(--accent-primary);
+        }
+
+        .pan-path {
+            flex: 1;
+            height: 2px;
+            background: rgba(255, 255, 255, 0.05);
+            margin: 0 0.8rem;
+            position: relative;
+        }
+
+        .pan-dot {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 8px;
+            height: 8px;
+            background: var(--accent-secondary);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: left 0.1s linear;
+        }
+
+        /* Disruption Mode Selector */
+        .disruption-modes {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-bottom: 1.5rem;
+        }
+
+        .mode-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--glass-border);
+            padding: 10px;
+            border-radius: 8px;
+            color: var(--text-secondary);
+            cursor: pointer;
+            font-size: 0.8rem;
+            transition: all 0.2s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .mode-btn.active {
+            background: rgba(var(--accent-primary-rgb), 0.1);
+            border-color: var(--accent-primary);
+            color: var(--text-primary);
+        }
+
+        .mode-icon {
+            font-size: 1.2rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="background-gradient"></div>
+    <div class="container">
+        <nav class="nav-bar">
+            <a href="/" class="nav-logo">FREKUENZY</a>
+            <div class="nav-links">
+                <a href="/">Home</a>
+                <div class="nav-item-dropdown">
+                    <button class="dropbtn active">Tools ▾</button>
+                    <div class="dropdown-content">
+                        <a href="/">
+                            <span class="dropdown-title">Frequency Generator</span>
+                            <span class="dropdown-desc">Custom Hz & Binaural Beats</span>
+                        </a>
+                        <a href="bilateral.html">
+                            <span class="dropdown-title">Bilateral (EMDR)</span>
+                            <span class="dropdown-desc">Trauma & Anxiety Relief</span>
+                        </a>
+                        <a href="isochronic.html">
+                            <span class="dropdown-title">Isochronic Tones</span>
+                            <span class="dropdown-desc">Brainwave Entrainment</span>
+                        </a>
+                        <a href="craving-disruptor.html">
+                            <span class="dropdown-title">Craving Disruptor</span>
+                            <span class="dropdown-desc">Addiction & Impulse Control</span>
+                        </a>
+                    </div>
+                </div>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+            </div>
+        </nav>
+
+        <header class="header">
+            <h1 class="logo">Craving Disruptor</h1>
+            <p class="tagline">Pattern Interruption for Behavioral Addictions</p>
+        </header>
+
+        <div class="card">
+            <!-- Program Presets -->
+            <div class="presets" style="margin-top: 0; margin-bottom: 1.5rem;">
+                <h3 class="presets-title">Select Focus Area</h3>
+                <div class="preset-buttons">
+                    <button class="preset-btn active" data-freq="6.0" data-label="Smoking Cessation" data-desc="6Hz Theta + 528Hz Solfeggio">
+                        <span class="preset-freq">Smoking</span>
+                        <span class="preset-name">Cessation</span>
+                    </button>
+                    <button class="preset-btn" data-freq="4.0" data-label="Gambling Control" data-desc="4Hz Deep Theta for Impulse Control">
+                        <span class="preset-freq">Gambling</span>
+                        <span class="preset-name">Control</span>
+                    </button>
+                    <button class="preset-btn" data-freq="7.83" data-label="Digital Detox" data-desc="7.83Hz Schumann Resonance">
+                        <span class="preset-freq">Digital</span>
+                        <span class="preset-name">Detox</span>
+                    </button>
+                    <button class="preset-btn" data-freq="2.5" data-label="General Craving" data-desc="2.5Hz Delta for Habit Disruption">
+                        <span class="preset-freq">General</span>
+                        <span class="preset-name">Craving</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Disruption Type -->
+            <div class="control-group">
+                <label class="input-label">Disruption Method</label>
+                <div class="disruption-modes">
+                    <button class="mode-btn active" data-mode="bilateral">
+                        <span class="mode-icon">🎧</span>
+                        <span>Bilateral</span>
+                    </button>
+                    <button class="mode-btn" data-mode="isochronic">
+                        <span class="mode-icon">🔊</span>
+                        <span>Isochronic</span>
+                    </button>
+                    <button class="mode-btn" data-mode="constant">
+                        <span class="mode-icon">🎵</span>
+                        <span>Constant</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Visualizer (Only for Bilateral) -->
+            <div id="visualizerContainer">
+                <div class="panning-visualizer">
+                    <div class="ear-indicator" id="leftEar">L</div>
+                    <div class="pan-path">
+                        <div class="pan-dot" id="panDot"></div>
+                    </div>
+                    <div class="ear-indicator" id="rightEar">R</div>
+                </div>
+            </div>
+
+            <!-- Controls -->
+            <div class="advanced-controls" style="grid-template-columns: 1fr; margin-bottom: 0;">
+                <div class="control-group">
+                    <label class="input-label">Intensity / Speed</label>
+                    <input type="range" id="speedSlider" min="0.1" max="2" step="0.1" value="0.5" class="volume-slider">
+                    <div style="text-align: right; color: var(--text-secondary); font-size: 0.8rem; margin-top: 5px;">
+                        <span id="speedValue">0.5</span> Hz Pulse/Sweep
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="input-label" id="freqLabel">Primary Frequency: 6.0 Hz</label>
+                    <div style="font-size: 0.75rem; color: var(--text-secondary); margin-bottom: 0.5rem;" id="modeDesc">
+                        6Hz Theta + 528Hz Solfeggio
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="input-label">Volume</label>
+                    <input type="range" id="volumeSlider" min="0" max="1" step="0.01" value="0.3" class="volume-slider">
+                </div>
+            </div>
+
+            <div class="controls" style="margin-top: 2rem;">
+                <button class="control-btn play-btn" id="playBtn"><span class="btn-icon">▶</span> Start Session</button>
+                <button class="control-btn stop-btn" id="stopBtn" disabled><span class="btn-icon">⬛</span> Stop</button>
+            </div>
+
+            <div class="status" id="status">
+                <span class="status-text">Ready - Headphones Recommended for Bilateral 🎧</span>
+            </div>
+        </div>
+
+        <main class="knowledge-base">
+            <h2 class="section-title">How to Disrupt Addiction Patterns</h2>
+            <article class="kb-article">
+                <p>Craving is often a neurological loop—a repetitive stimulus that demands attention. The <strong>Craving Disruptor</strong> works by introducing novel, rhythmic sensory input that occupies the brain's processing capacity, making it harder for the "craving signal" to dominate.</p>
+                
+                <h3 class="article-subtitle">Frequency Profiles:</h3>
+                <ul class="kb-list">
+                    <li><strong>6Hz Theta (Smoking Cessation):</strong> Associated with increased receptivity to subconscious reprogramming. Often used with 528Hz to promote a sense of well-being.</li>
+                    <li><strong>4Hz Theta (Gambling/Impulsivity):</strong> Deep relaxation state that helps mitigate the "rush" or "high" sought in gambling and high-stimulation activities.</li>
+                    <li><strong>7.83Hz (Digital Detox):</strong> The Schumann Resonance. Helps reconnect the brain to natural rhythms after prolonged exposure to artificial digital stimulation.</li>
+                    <li><strong>2.5Hz (General Habit):</strong> Deep delta frequency aimed at resetting lower-level habit loops.</li>
+                </ul>
+
+                <h3 class="article-subtitle">Disruption Methods:</h3>
+                <p><strong>Bilateral Stimulation:</strong> Alternates sound between left and right ears. This forces the brain to shift focus between hemispheres, which is scientifically shown in EMDR therapy to reduce the emotional intensity of memories and cravings.</p>
+                <p><strong>Isochronic Tones:</strong> Simple, regular pulses of sound that are highly effective for brainwave entrainment without requiring headphones.</p>
+            </article>
+            <a href="/" class="back-link" style="display:block; text-align:center; margin-top:2rem;">← Back to Main Generator</a>
+        </main>
+
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4 class="footer-title">Frekuenzy</h4>
+                    <p class="footer-desc">Your free online sanctuary for healing frequencies, binaural beats, and spiritual growth.</p>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Quick Links</h4>
+                    <nav class="footer-nav">
+                        <a href="/" class="footer-link">Home</a>
+                        <a href="about.html" class="footer-link">About Us</a>
+                        <a href="contact.html" class="footer-link">Contact</a>
+                    </nav>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="copyright">&copy; 2026 Frekuenzy. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        let audioCtx;
+        let primaryOsc;
+        let secondaryOsc; // For layered 528Hz etc
+        let panner;
+        let gainNode;
+        let isochronicGain;
+        let isPlaying = false;
+        let animationReq;
+        
+        let currentFreq = 6.0;
+        let currentMode = 'bilateral'; // bilateral, isochronic, constant
+
+        const playBtn = document.getElementById('playBtn');
+        const stopBtn = document.getElementById('stopBtn');
+        const speedSlider = document.getElementById('speedSlider');
+        const volumeSlider = document.getElementById('volumeSlider');
+        const visualizerContainer = document.getElementById('visualizerContainer');
+        const leftEar = document.getElementById('leftEar');
+        const rightEar = document.getElementById('rightEar');
+        const panDot = document.getElementById('panDot');
+        const presetBtns = document.querySelectorAll('.preset-btn');
+        const modeBtns = document.querySelectorAll('.mode-btn');
+
+        // UI Updates
+        speedSlider.addEventListener('input', (e) => document.getElementById('speedValue').textContent = e.target.value);
+        
+        volumeSlider.addEventListener('input', (e) => {
+            if (gainNode) gainNode.gain.setValueAtTime(e.target.value, audioCtx.currentTime);
+        });
+
+        presetBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                presetBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                currentFreq = parseFloat(btn.dataset.freq);
+                document.getElementById('freqLabel').textContent = `Primary Frequency: ${currentFreq} Hz`;
+                document.getElementById('modeDesc').textContent = btn.dataset.desc;
+                if (isPlaying) restartAudio();
+            });
+        });
+
+        modeBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                modeBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                currentMode = btn.dataset.mode;
+                
+                if (currentMode === 'bilateral') {
+                    visualizerContainer.style.display = 'block';
+                } else {
+                    visualizerContainer.style.display = 'none';
+                }
+                
+                if (isPlaying) restartAudio();
+            });
+        });
+
+        function restartAudio() {
+            stop();
+            start();
+        }
+
+        playBtn.addEventListener('click', start);
+        stopBtn.addEventListener('click', stop);
+
+        function start() {
+            if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+            if (audioCtx.state === 'suspended') audioCtx.resume();
+
+            primaryOsc = audioCtx.createOscillator();
+            gainNode = audioCtx.createGain();
+            gainNode.gain.value = volumeSlider.value;
+
+            primaryOsc.frequency.value = currentFreq;
+            primaryOsc.type = 'sine';
+
+            // Add layering logic
+            if (currentFreq === 6.0) {
+                secondaryOsc = audioCtx.createOscillator();
+                secondaryOsc.frequency.value = 528;
+                secondaryOsc.type = 'sine';
+                secondaryOsc.connect(gainNode);
+                secondaryOsc.start();
+            }
+
+            if (currentMode === 'bilateral') {
+                panner = audioCtx.createStereoPanner();
+                primaryOsc.connect(gainNode);
+                gainNode.connect(panner);
+                panner.connect(audioCtx.destination);
+                startAnimation();
+            } else if (currentMode === 'isochronic') {
+                isochronicGain = audioCtx.createGain();
+                primaryOsc.connect(isochronicGain);
+                isochronicGain.connect(gainNode);
+                gainNode.connect(audioCtx.destination);
+                startAnimation();
+            } else {
+                primaryOsc.connect(gainNode);
+                gainNode.connect(audioCtx.destination);
+            }
+
+            primaryOsc.start();
+            isPlaying = true;
+            playBtn.disabled = true;
+            stopBtn.disabled = false;
+        }
+
+        function stop() {
+            if (primaryOsc) { primaryOsc.stop(); primaryOsc.disconnect(); }
+            if (secondaryOsc) { secondaryOsc.stop(); secondaryOsc.disconnect(); }
+            if (panner) panner.disconnect();
+            if (isochronicGain) isochronicGain.disconnect();
+            if (gainNode) gainNode.disconnect();
+
+            isPlaying = false;
+            playBtn.disabled = false;
+            stopBtn.disabled = true;
+            cancelAnimationFrame(animationReq);
+
+            // Reset Visuals
+            leftEar.classList.remove('active');
+            rightEar.classList.remove('active');
+            panDot.style.left = '50%';
+        }
+
+        function startAnimation() {
+            function animate(time) {
+                if (!isPlaying) return;
+
+                const speedHz = parseFloat(speedSlider.value);
+                const t = time / 1000;
+
+                if (currentMode === 'bilateral' && panner) {
+                    const panVal = Math.sin(2 * Math.PI * speedHz * t);
+                    panner.pan.value = panVal;
+
+                    // Visuals
+                    const visualPercent = ((panVal + 1) / 2) * 100;
+                    panDot.style.left = visualPercent + '%';
+
+                    if (panVal < -0.5) {
+                        leftEar.classList.add('active');
+                        rightEar.classList.remove('active');
+                    } else if (panVal > 0.5) {
+                        rightEar.classList.add('active');
+                        leftEar.classList.remove('active');
+                    } else {
+                        leftEar.classList.remove('active');
+                        rightEar.classList.remove('active');
+                    }
+                } else if (currentMode === 'isochronic' && isochronicGain) {
+                    // Square wave pulse for gain
+                    const pulse = Math.sin(2 * Math.PI * speedHz * t) > 0 ? 1 : 0;
+                    isochronicGain.gain.setValueAtTime(pulse, audioCtx.currentTime);
+                }
+
+                animationReq = requestAnimationFrame(animate);
+            }
+            animationReq = requestAnimationFrame(animate);
+        }
+    </script>
+</body>
+
+</html>

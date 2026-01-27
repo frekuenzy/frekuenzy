@@ -145,6 +145,10 @@
                             <span class="dropdown-title">Isochronic Tones</span>
                             <span class="dropdown-desc">Brainwave Entrainment</span>
                         </a>
+                        <a href="hemi-sync.html">
+                            <span class="dropdown-title">Hemi-Sync</span>
+                            <span class="dropdown-desc">Brain Hemisphere Sync</span>
+                        </a>
                         <a href="craving-disruptor.html">
                             <span class="dropdown-title">Craving Disruptor</span>
                             <span class="dropdown-desc">Addiction & Impulse Control</span>
@@ -166,19 +170,23 @@
             <div class="presets" style="margin-top: 0; margin-bottom: 1.5rem;">
                 <h3 class="presets-title">Select Focus Area</h3>
                 <div class="preset-buttons">
-                    <button class="preset-btn active" data-freq="6.0" data-label="Smoking Cessation" data-desc="6Hz Theta + 528Hz Solfeggio">
+                    <button class="preset-btn active" data-freq="6.0" data-label="Smoking Cessation"
+                        data-desc="6Hz Theta + 528Hz Solfeggio">
                         <span class="preset-freq">Smoking</span>
                         <span class="preset-name">Cessation</span>
                     </button>
-                    <button class="preset-btn" data-freq="4.0" data-label="Gambling Control" data-desc="4Hz Deep Theta for Impulse Control">
+                    <button class="preset-btn" data-freq="4.0" data-label="Gambling Control"
+                        data-desc="4Hz Deep Theta for Impulse Control">
                         <span class="preset-freq">Gambling</span>
                         <span class="preset-name">Control</span>
                     </button>
-                    <button class="preset-btn" data-freq="7.83" data-label="Digital Detox" data-desc="7.83Hz Schumann Resonance">
+                    <button class="preset-btn" data-freq="7.83" data-label="Digital Detox"
+                        data-desc="7.83Hz Schumann Resonance">
                         <span class="preset-freq">Digital</span>
                         <span class="preset-name">Detox</span>
                     </button>
-                    <button class="preset-btn" data-freq="2.5" data-label="General Craving" data-desc="2.5Hz Delta for Habit Disruption">
+                    <button class="preset-btn" data-freq="2.5" data-label="General Craving"
+                        data-desc="2.5Hz Delta for Habit Disruption">
                         <span class="preset-freq">General</span>
                         <span class="preset-name">Craving</span>
                     </button>
@@ -251,28 +259,39 @@
         <main class="knowledge-base">
             <h2 class="section-title">How to Disrupt Addiction Patterns</h2>
             <article class="kb-article">
-                <p>Craving is often a neurological loop—a repetitive stimulus that demands attention. The <strong>Craving Disruptor</strong> works by introducing novel, rhythmic sensory input that occupies the brain's processing capacity, making it harder for the "craving signal" to dominate.</p>
-                
+                <p>Craving is often a neurological loop—a repetitive stimulus that demands attention. The
+                    <strong>Craving Disruptor</strong> works by introducing novel, rhythmic sensory input that occupies
+                    the brain's processing capacity, making it harder for the "craving signal" to dominate.</p>
+
                 <h3 class="article-subtitle">Frequency Profiles:</h3>
                 <ul class="kb-list">
-                    <li><strong>6Hz Theta (Smoking Cessation):</strong> Associated with increased receptivity to subconscious reprogramming. Often used with 528Hz to promote a sense of well-being.</li>
-                    <li><strong>4Hz Theta (Gambling/Impulsivity):</strong> Deep relaxation state that helps mitigate the "rush" or "high" sought in gambling and high-stimulation activities.</li>
-                    <li><strong>7.83Hz (Digital Detox):</strong> The Schumann Resonance. Helps reconnect the brain to natural rhythms after prolonged exposure to artificial digital stimulation.</li>
-                    <li><strong>2.5Hz (General Habit):</strong> Deep delta frequency aimed at resetting lower-level habit loops.</li>
+                    <li><strong>6Hz Theta (Smoking Cessation):</strong> Associated with increased receptivity to
+                        subconscious reprogramming. Often used with 528Hz to promote a sense of well-being.</li>
+                    <li><strong>4Hz Theta (Gambling/Impulsivity):</strong> Deep relaxation state that helps mitigate the
+                        "rush" or "high" sought in gambling and high-stimulation activities.</li>
+                    <li><strong>7.83Hz (Digital Detox):</strong> The Schumann Resonance. Helps reconnect the brain to
+                        natural rhythms after prolonged exposure to artificial digital stimulation.</li>
+                    <li><strong>2.5Hz (General Habit):</strong> Deep delta frequency aimed at resetting lower-level
+                        habit loops.</li>
                 </ul>
 
                 <h3 class="article-subtitle">Disruption Methods:</h3>
-                <p><strong>Bilateral Stimulation:</strong> Alternates sound between left and right ears. This forces the brain to shift focus between hemispheres, which is scientifically shown in EMDR therapy to reduce the emotional intensity of memories and cravings.</p>
-                <p><strong>Isochronic Tones:</strong> Simple, regular pulses of sound that are highly effective for brainwave entrainment without requiring headphones.</p>
+                <p><strong>Bilateral Stimulation:</strong> Alternates sound between left and right ears. This forces the
+                    brain to shift focus between hemispheres, which is scientifically shown in EMDR therapy to reduce
+                    the emotional intensity of memories and cravings.</p>
+                <p><strong>Isochronic Tones:</strong> Simple, regular pulses of sound that are highly effective for
+                    brainwave entrainment without requiring headphones.</p>
             </article>
-            <a href="/" class="back-link" style="display:block; text-align:center; margin-top:2rem;">← Back to Main Generator</a>
+            <a href="/" class="back-link" style="display:block; text-align:center; margin-top:2rem;">← Back to Main
+                Generator</a>
         </main>
 
         <footer class="footer">
             <div class="footer-content">
                 <div class="footer-section">
                     <h4 class="footer-title">Frekuenzy</h4>
-                    <p class="footer-desc">Your free online sanctuary for healing frequencies, binaural beats, and spiritual growth.</p>
+                    <p class="footer-desc">Your free online sanctuary for healing frequencies, binaural beats, and
+                        spiritual growth.</p>
                 </div>
                 <div class="footer-section">
                     <h4 class="footer-title">Quick Links</h4>
@@ -298,7 +317,7 @@
         let isochronicGain;
         let isPlaying = false;
         let animationReq;
-        
+
         let currentFreq = 6.0;
         let currentMode = 'bilateral'; // bilateral, isochronic, constant
 
@@ -315,7 +334,7 @@
 
         // UI Updates
         speedSlider.addEventListener('input', (e) => document.getElementById('speedValue').textContent = e.target.value);
-        
+
         volumeSlider.addEventListener('input', (e) => {
             if (gainNode) gainNode.gain.setValueAtTime(e.target.value, audioCtx.currentTime);
         });
@@ -336,13 +355,13 @@
                 modeBtns.forEach(b => b.classList.remove('active'));
                 btn.classList.add('active');
                 currentMode = btn.dataset.mode;
-                
+
                 if (currentMode === 'bilateral') {
                     visualizerContainer.style.display = 'block';
                 } else {
                     visualizerContainer.style.display = 'none';
                 }
-                
+
                 if (isPlaying) restartAudio();
             });
         });

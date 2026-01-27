@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hemi-Sync Audio - Free Brain Synchronization & Meditation Tool | Frekuenzy</title>
+    <meta name="title" content="Hemi-Sync Audio - Free Brain Synchronization & Meditation Tool">
+    <meta name="description"
+        content="Free online Hemi-Sync audio tool for brain hemisphere synchronization. Combines multiple binaural beat frequencies for enhanced meditation, focus, and deep relaxation.">
+    <meta name="keywords"
+        content="hemi-sync, brain synchronization, binaural beats, brain hemispheres, meditation, focus tool, relaxation, altered states">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://frekuenzy.com/hemi-sync.html">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://frekuenzy.com/hemi-sync.html">
+    <meta property="og:title" content="Hemi-Sync Audio - Brain Synchronization - Frekuenzy">
+    <meta property="og:description"
+        content="Free online Hemi-Sync audio tool for brain hemisphere synchronization and enhanced meditation.">
+    <meta property="og:image" content="https://frekuenzy.com/apple-touch-icon.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://frekuenzy.com/hemi-sync.html">
+    <meta property="twitter:title" content="Hemi-Sync Audio - Brain Synchronization - Frekuenzy">
+    <meta property="twitter:description"
+        content="Free online Hemi-Sync audio tool for brain hemisphere synchronization and enhanced meditation.">
+    <meta property="twitter:image" content="https://frekuenzy.com/apple-touch-icon.png">
+
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Hemi-Sync Audio Tool",
+      "url": "https://frekuenzy.com/hemi-sync.html",
+      "description": "Free online Hemi-Sync audio tool for brain hemisphere synchronization using multiple binaural beat frequencies.",
+      "applicationCategory": "HealthApplication",
+      "operatingSystem": "Any",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "featureList": "Multi-layer Binaural Beats, Brain Hemisphere Sync, Focus States, Meditation Enhancement"
+    }
+    </script>
+
+    <!-- Fonts & Styles -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css?v=1.2">
+
+    <style>
+        .hemisync-visualizer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            margin: 2rem 0;
+            padding: 2rem;
+        }
+
+        .hemisphere {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.3), rgba(236, 72, 153, 0.3));
+            border: 2px solid var(--glass-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .hemisphere.left {
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(99, 102, 241, 0.2));
+        }
+
+        .hemisphere.right {
+            background: linear-gradient(135deg, rgba(236, 72, 153, 0.2), rgba(244, 114, 182, 0.2));
+        }
+
+        .hemisphere.active {
+            box-shadow: 0 0 30px var(--accent-primary);
+            transform: scale(1.1);
+        }
+
+        .hemisphere.active.left {
+            box-shadow: 0 0 30px rgba(59, 130, 246, 0.6);
+        }
+
+        .hemisphere.active.right {
+            box-shadow: 0 0 30px rgba(236, 72, 153, 0.6);
+        }
+
+        .sync-bridge {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .sync-line {
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, rgba(59, 130, 246, 0.5), rgba(236, 72, 153, 0.5));
+            border-radius: 2px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .sync-line::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent);
+            animation: syncPulse 1.5s ease-in-out infinite;
+        }
+
+        @keyframes syncPulse {
+            0% {
+                left: -100%;
+            }
+
+            100% {
+                left: 100%;
+            }
+        }
+
+        .sync-status {
+            font-size: 0.8rem;
+            color: var(--accent-primary);
+            font-weight: 600;
+        }
+
+        .layer-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            padding: 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .layer-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .layer-title {
+            font-size: 0.95rem;
+            color: var(--text-primary);
+            font-weight: 500;
+        }
+
+        .layer-badge {
+            font-size: 0.75rem;
+            padding: 0.25rem 0.5rem;
+            border-radius: 20px;
+            background: rgba(99, 102, 241, 0.2);
+            color: var(--accent-primary);
+        }
+
+        .frequency-display-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.75rem;
+        }
+
+        .freq-value {
+            color: var(--accent-secondary);
+            font-weight: 600;
+        }
+
+        .preset-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.75rem;
+            margin: 1.5rem 0;
+        }
+
+        .preset-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            padding: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .preset-card:hover {
+            border-color: var(--accent-primary);
+            background: rgba(99, 102, 241, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .preset-card.active {
+            border-color: var(--accent-primary);
+            background: rgba(99, 102, 241, 0.15);
+            box-shadow: 0 0 15px rgba(99, 102, 241, 0.3);
+        }
+
+        .preset-icon {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .preset-name {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+        }
+
+        .preset-desc {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+        }
+
+        @media (max-width: 600px) {
+            .hemisync-visualizer {
+                gap: 1rem;
+                padding: 1rem;
+            }
+
+            .hemisphere {
+                width: 70px;
+                height: 70px;
+                font-size: 0.8rem;
+            }
+
+            .preset-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="background-gradient"></div>
+    <div class="container">
+        <nav class="nav-bar">
+            <a href="/" class="nav-logo">FREKUENZY</a>
+            <div class="nav-links">
+                <a href="/">Home</a>
+                <div class="nav-item-dropdown">
+                    <button class="dropbtn active">Tools ▾</button>
+                    <div class="dropdown-content">
+                        <a href="/">
+                            <span class="dropdown-title">Frequency Generator</span>
+                            <span class="dropdown-desc">Custom Hz & Binaural Beats</span>
+                        </a>
+                        <a href="bilateral.html">
+                            <span class="dropdown-title">Bilateral (EMDR)</span>
+                            <span class="dropdown-desc">Trauma & Anxiety Relief</span>
+                        </a>
+                        <a href="isochronic.html">
+                            <span class="dropdown-title">Isochronic Tones</span>
+                            <span class="dropdown-desc">Brainwave Entrainment</span>
+                        </a>
+                        <a href="hemi-sync.html">
+                            <span class="dropdown-title">Hemi-Sync</span>
+                            <span class="dropdown-desc">Brain Hemisphere Sync</span>
+                        </a>
+                        <a href="craving-disruptor.html">
+                            <span class="dropdown-title">Craving Disruptor</span>
+                            <span class="dropdown-desc">Addiction & Impulse Control</span>
+                        </a>
+                    </div>
+                </div>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+            </div>
+        </nav>
+
+        <header class="header">
+            <h1 class="logo">Hemi-Sync Audio</h1>
+            <p class="tagline">Brain Hemisphere Synchronization</p>
+        </header>
+
+        <div class="card">
+            <!-- Visualizer -->
+            <div class="hemisync-visualizer">
+                <div class="hemisphere left" id="leftHemi">
+                    <span>LEFT<br>Logical</span>
+                </div>
+                <div class="sync-bridge">
+                    <div class="sync-line" id="syncLine"></div>
+                    <span class="sync-status" id="syncStatus">Ready</span>
+                </div>
+                <div class="hemisphere right" id="rightHemi">
+                    <span>RIGHT<br>Creative</span>
+                </div>
+            </div>
+
+            <!-- Presets -->
+            <h3 style="text-align: center; color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1rem;">Select
+                a State</h3>
+            <div class="preset-grid">
+                <div class="preset-card active" data-preset="focus">
+                    <div class="preset-icon">🎯</div>
+                    <div class="preset-name">Focus</div>
+                    <div class="preset-desc">Beta (14-18 Hz) • Deep concentration</div>
+                </div>
+                <div class="preset-card" data-preset="relax">
+                    <div class="preset-icon">🧘</div>
+                    <div class="preset-name">Relaxation</div>
+                    <div class="preset-desc">Alpha (8-12 Hz) • Calm awareness</div>
+                </div>
+                <div class="preset-card" data-preset="meditate">
+                    <div class="preset-icon">🌙</div>
+                    <div class="preset-name">Deep Meditation</div>
+                    <div class="preset-desc">Theta (4-7 Hz) • Inner exploration</div>
+                </div>
+                <div class="preset-card" data-preset="sleep">
+                    <div class="preset-icon">💤</div>
+                    <div class="preset-name">Sleep</div>
+                    <div class="preset-desc">Delta (1-3 Hz) • Restorative rest</div>
+                </div>
+            </div>
+
+            <!-- Layer Controls -->
+            <div class="layer-card">
+                <div class="layer-header">
+                    <span class="layer-title">🔊 Primary Layer</span>
+                    <span class="layer-badge" id="layer1Badge">14 Hz</span>
+                </div>
+                <div class="frequency-display-row">
+                    <span>Carrier Frequency</span>
+                    <span class="freq-value" id="carrier1Value">200 Hz</span>
+                </div>
+                <div class="control-group" style="margin-bottom: 0.75rem;">
+                    <input type="range" id="carrier1Slider" min="100" max="500" step="10" value="200"
+                        class="volume-slider">
+                </div>
+                <div class="frequency-display-row">
+                    <span>Beat Frequency</span>
+                    <span class="freq-value" id="beat1Value">14 Hz</span>
+                </div>
+                <div class="control-group">
+                    <input type="range" id="beat1Slider" min="1" max="40" step="0.5" value="14" class="volume-slider">
+                </div>
+            </div>
+
+            <div class="layer-card">
+                <div class="layer-header">
+                    <span class="layer-title">🎵 Secondary Layer (Harmony)</span>
+                    <span class="layer-badge" id="layer2Badge">7 Hz</span>
+                </div>
+                <div class="frequency-display-row">
+                    <span>Carrier Frequency</span>
+                    <span class="freq-value" id="carrier2Value">300 Hz</span>
+                </div>
+                <div class="control-group" style="margin-bottom: 0.75rem;">
+                    <input type="range" id="carrier2Slider" min="100" max="500" step="10" value="300"
+                        class="volume-slider">
+                </div>
+                <div class="frequency-display-row">
+                    <span>Beat Frequency</span>
+                    <span class="freq-value" id="beat2Value">7 Hz</span>
+                </div>
+                <div class="control-group">
+                    <input type="range" id="beat2Slider" min="1" max="40" step="0.5" value="7" class="volume-slider">
+                </div>
+            </div>
+
+            <div class="layer-card">
+                <div class="layer-header">
+                    <span class="layer-title">🎚️ Master Controls</span>
+                </div>
+                <div class="frequency-display-row">
+                    <span>Volume</span>
+                    <span class="freq-value" id="volumeValue">30%</span>
+                </div>
+                <div class="control-group">
+                    <input type="range" id="volumeSlider" min="0" max="1" step="0.01" value="0.3" class="volume-slider">
+                </div>
+            </div>
+
+            <div class="controls" style="margin-top: 1.5rem;">
+                <button class="control-btn play-btn" id="playBtn"><span class="btn-icon">▶</span> Start Sync</button>
+                <button class="control-btn stop-btn" id="stopBtn" disabled><span class="btn-icon">⬛</span> Stop</button>
+            </div>
+
+            <div class="status" id="status">
+                <span class="status-text">Ready - Stereo Headphones Required 🎧</span>
+            </div>
+        </div>
+
+        <main class="knowledge-base">
+            <h2 class="section-title">What is Hemi-Sync?</h2>
+            <article class="kb-article">
+                <p><strong>Hemi-Sync (Hemispheric Synchronization)</strong> is an audio technology developed by Robert
+                    Monroe and the Monroe Institute. It uses carefully designed audio patterns to synchronize the two
+                    hemispheres of the brain, creating a coherent brainwave state.</p>
+                <p><strong>How it works:</strong> Unlike single binaural beats, Hemi-Sync often uses <em>multiple
+                        layers</em> of binaural frequencies simultaneously. This multi-layered approach can create more
+                    complex and targeted brain states, guiding the brain through different consciousness levels.</p>
+                <p><strong>Benefits:</strong></p>
+                <ul class="kb-list">
+                    <li><strong>Enhanced Focus:</strong> Beta-range sync for improved concentration and mental clarity
+                    </li>
+                    <li><strong>Deep Relaxation:</strong> Alpha waves for stress relief and calm awareness</li>
+                    <li><strong>Meditation Enhancement:</strong> Theta states for deeper meditation and insight</li>
+                    <li><strong>Sleep Support:</strong> Delta frequencies for restorative deep sleep</li>
+                    <li><strong>Whole-Brain Thinking:</strong> Bridging logical and creative brain functions</li>
+                </ul>
+            </article>
+
+            <article class="kb-article">
+                <h3 class="article-title">The Science Behind Brain Synchronization</h3>
+                <p>The human brain has two hemispheres with specialized functions. The <strong>left hemisphere</strong>
+                    is typically associated with logical thinking, language, and analytical processing. The
+                    <strong>right hemisphere</strong> handles creativity, intuition, and spatial awareness.</p>
+                <p>When both hemispheres work in sync, we experience what's often called a "whole brain" state. This
+                    synchronized brainwave pattern is associated with:</p>
+                <ul class="kb-list">
+                    <li>Peak performance and flow states</li>
+                    <li>Enhanced learning and memory retention</li>
+                    <li>Greater emotional balance</li>
+                    <li>Heightened creativity with logical application</li>
+                </ul>
+            </article>
+            <a href="/" class="back-link" style="display:block; text-align:center; margin-top:2rem;">← Back to Main
+                Generator</a>
+        </main>
+
+        <footer class="footer">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4 class="footer-title">Frekuenzy</h4>
+                    <p class="footer-desc">Your free online sanctuary for healing frequencies, binaural beats, and
+                        spiritual growth.</p>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Quick Links</h4>
+                    <nav class="footer-nav">
+                        <a href="/" class="footer-link">Home</a>
+                        <a href="about.html" class="footer-link">About Us</a>
+                        <a href="contact.html" class="footer-link">Contact</a>
+                    </nav>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Legal</h4>
+                    <nav class="footer-nav">
+                        <a href="privacy-policy.html" class="footer-link">Privacy Policy</a>
+                        <a href="terms.html" class="footer-link">Terms of Service</a>
+                    </nav>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="copyright">&copy; 2026 Frekuenzy. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Hemi-Sync Audio Engine
+        let audioCtx;
+        let isPlaying = false;
+
+        // Layer 1 Oscillators (Primary)
+        let oscL1, oscR1, gainL1, gainR1, merger1;
+
+        // Layer 2 Oscillators (Secondary)
+        let oscL2, oscR2, gainL2, gainR2, merger2;
+
+        // Master
+        let masterGain;
+
+        // DOM Elements
+        const playBtn = document.getElementById('playBtn');
+        const stopBtn = document.getElementById('stopBtn');
+        const carrier1Slider = document.getElementById('carrier1Slider');
+        const beat1Slider = document.getElementById('beat1Slider');
+        const carrier2Slider = document.getElementById('carrier2Slider');
+        const beat2Slider = document.getElementById('beat2Slider');
+        const volumeSlider = document.getElementById('volumeSlider');
+
+        const leftHemi = document.getElementById('leftHemi');
+        const rightHemi = document.getElementById('rightHemi');
+        const syncStatus = document.getElementById('syncStatus');
+        const syncLine = document.getElementById('syncLine');
+
+        // Presets
+        const presets = {
+            focus: { carrier1: 200, beat1: 14, carrier2: 300, beat2: 18, label: 'Focus Mode' },
+            relax: { carrier1: 200, beat1: 10, carrier2: 280, beat2: 8, label: 'Relaxation' },
+            meditate: { carrier1: 180, beat1: 6, carrier2: 260, beat2: 4, label: 'Deep Meditation' },
+            sleep: { carrier1: 150, beat1: 2, carrier2: 220, beat2: 1.5, label: 'Sleep Mode' }
+        };
+
+        // Preset Card Clicks
+        document.querySelectorAll('.preset-card').forEach(card => {
+            card.addEventListener('click', () => {
+                document.querySelectorAll('.preset-card').forEach(c => c.classList.remove('active'));
+                card.classList.add('active');
+
+                const presetKey = card.dataset.preset;
+                const preset = presets[presetKey];
+
+                carrier1Slider.value = preset.carrier1;
+                beat1Slider.value = preset.beat1;
+                carrier2Slider.value = preset.carrier2;
+                beat2Slider.value = preset.beat2;
+
+                updateDisplays();
+
+                if (isPlaying) {
+                    updateOscillators();
+                }
+            });
+        });
+
+        // Slider Updates
+        carrier1Slider.addEventListener('input', updateDisplays);
+        beat1Slider.addEventListener('input', updateDisplays);
+        carrier2Slider.addEventListener('input', updateDisplays);
+        beat2Slider.addEventListener('input', updateDisplays);
+        volumeSlider.addEventListener('input', () => {
+            document.getElementById('volumeValue').textContent = Math.round(volumeSlider.value * 100) + '%';
+            if (masterGain) masterGain.gain.setValueAtTime(volumeSlider.value, audioCtx.currentTime);
+        });
+
+        function updateDisplays() {
+            document.getElementById('carrier1Value').textContent = carrier1Slider.value + ' Hz';
+            document.getElementById('beat1Value').textContent = beat1Slider.value + ' Hz';
+            document.getElementById('layer1Badge').textContent = beat1Slider.value + ' Hz';
+
+            document.getElementById('carrier2Value').textContent = carrier2Slider.value + ' Hz';
+            document.getElementById('beat2Value').textContent = beat2Slider.value + ' Hz';
+            document.getElementById('layer2Badge').textContent = beat2Slider.value + ' Hz';
+
+            if (isPlaying) updateOscillators();
+        }
+
+        function updateOscillators() {
+            if (!audioCtx) return;
+
+            const carrier1 = parseFloat(carrier1Slider.value);
+            const beat1 = parseFloat(beat1Slider.value);
+            const carrier2 = parseFloat(carrier2Slider.value);
+            const beat2 = parseFloat(beat2Slider.value);
+
+            // Layer 1 binaural
+            if (oscL1) oscL1.frequency.setValueAtTime(carrier1, audioCtx.currentTime);
+            if (oscR1) oscR1.frequency.setValueAtTime(carrier1 + beat1, audioCtx.currentTime);
+
+            // Layer 2 binaural
+            if (oscL2) oscL2.frequency.setValueAtTime(carrier2, audioCtx.currentTime);
+            if (oscR2) oscR2.frequency.setValueAtTime(carrier2 + beat2, audioCtx.currentTime);
+        }
+
+        playBtn.addEventListener('click', () => {
+            if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+            const carrier1 = parseFloat(carrier1Slider.value);
+            const beat1 = parseFloat(beat1Slider.value);
+            const carrier2 = parseFloat(carrier2Slider.value);
+            const beat2 = parseFloat(beat2Slider.value);
+
+            // Master Gain
+            masterGain = audioCtx.createGain();
+            masterGain.gain.value = volumeSlider.value;
+            masterGain.connect(audioCtx.destination);
+
+            // === LAYER 1 ===
+            merger1 = audioCtx.createChannelMerger(2);
+
+            oscL1 = audioCtx.createOscillator();
+            oscL1.type = 'sine';
+            oscL1.frequency.value = carrier1;
+
+            oscR1 = audioCtx.createOscillator();
+            oscR1.type = 'sine';
+            oscR1.frequency.value = carrier1 + beat1;
+
+            gainL1 = audioCtx.createGain();
+            gainL1.gain.value = 0.5;
+            gainR1 = audioCtx.createGain();
+            gainR1.gain.value = 0.5;
+
+            oscL1.connect(gainL1);
+            oscR1.connect(gainR1);
+            gainL1.connect(merger1, 0, 0); // Left channel
+            gainR1.connect(merger1, 0, 1); // Right channel
+            merger1.connect(masterGain);
+
+            oscL1.start();
+            oscR1.start();
+
+            // === LAYER 2 ===
+            merger2 = audioCtx.createChannelMerger(2);
+
+            oscL2 = audioCtx.createOscillator();
+            oscL2.type = 'sine';
+            oscL2.frequency.value = carrier2;
+
+            oscR2 = audioCtx.createOscillator();
+            oscR2.type = 'sine';
+            oscR2.frequency.value = carrier2 + beat2;
+
+            gainL2 = audioCtx.createGain();
+            gainL2.gain.value = 0.35; // Slightly lower for harmony layer
+            gainR2 = audioCtx.createGain();
+            gainR2.gain.value = 0.35;
+
+            oscL2.connect(gainL2);
+            oscR2.connect(gainR2);
+            gainL2.connect(merger2, 0, 0);
+            gainR2.connect(merger2, 0, 1);
+            merger2.connect(masterGain);
+
+            oscL2.start();
+            oscR2.start();
+
+            isPlaying = true;
+            playBtn.disabled = true;
+            stopBtn.disabled = false;
+
+            // Activate Visuals
+            leftHemi.classList.add('active');
+            rightHemi.classList.add('active');
+            syncStatus.textContent = 'Syncing...';
+            syncLine.style.background = 'linear-gradient(90deg, rgba(59, 130, 246, 0.8), rgba(236, 72, 153, 0.8))';
+
+            animateSync();
+        });
+
+        stopBtn.addEventListener('click', stop);
+
+        function stop() {
+            if (oscL1) { oscL1.stop(); oscL1.disconnect(); }
+            if (oscR1) { oscR1.stop(); oscR1.disconnect(); }
+            if (oscL2) { oscL2.stop(); oscL2.disconnect(); }
+            if (oscR2) { oscR2.stop(); oscR2.disconnect(); }
+
+            isPlaying = false;
+            playBtn.disabled = false;
+            stopBtn.disabled = true;
+
+            cancelAnimationFrame(animReq);
+            leftHemi.classList.remove('active');
+            rightHemi.classList.remove('active');
+            syncStatus.textContent = 'Ready';
+            syncLine.style.background = 'linear-gradient(90deg, rgba(59, 130, 246, 0.5), rgba(236, 72, 153, 0.5))';
+        }
+
+        let animReq;
+        function animateSync() {
+            if (!isPlaying) return;
+
+            const t = performance.now() / 1000;
+            const beat1 = parseFloat(beat1Slider.value);
+
+            // Pulse hemispheres based on beat frequency
+            const pulse = (Math.sin(2 * Math.PI * beat1 * t) + 1) / 2;
+            const scale = 1 + pulse * 0.1;
+
+            leftHemi.style.transform = `scale(${scale})`;
+            rightHemi.style.transform = `scale(${scale})`;
+
+            animReq = requestAnimationFrame(animateSync);
+        }
+    </script>
+</body>
+
+</html>

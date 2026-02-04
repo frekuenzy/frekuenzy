@@ -313,3 +313,292 @@ document.addEventListener('keydown', (e) => {
         isPlaying ? stopFrequency() : startFrequency();
     }
 });
+
+// ===================================
+// DOWNLOAD FUNCTIONALITY
+// ===================================
+const downloadBtn = document.getElementById('downloadBtn');
+const downloadModal = document.getElementById('downloadModal');
+const modalOverlay = document.getElementById('modalOverlay');
+const modalClose = document.getElementById('modalClose');
+const generateBtn = document.getElementById('generateBtn');
+const downloadDuration = document.getElementById('downloadDuration');
+const durationValue = document.getElementById('durationValue');
+const formatBtns = document.querySelectorAll('.format-btn');
+const progressSection = document.getElementById('progressSection');
+const progressFill = document.getElementById('progressFill');
+const progressText = document.getElementById('progressText');
+const previewFreq = document.getElementById('previewFreq');
+const previewWave = document.getElementById('previewWave');
+const previewMode = document.getElementById('previewMode');
+
+let selectedFormat = 'wav';
+
+// Modal Open/Close
+if (downloadBtn) {
+    downloadBtn.addEventListener('click', openDownloadModal);
+}
+
+if (modalClose) {
+    modalClose.addEventListener('click', closeDownloadModal);
+}
+
+if (modalOverlay) {
+    modalOverlay.addEventListener('click', closeDownloadModal);
+}
+
+function openDownloadModal() {
+    if (downloadModal) {
+        downloadModal.classList.remove('hidden');
+        updateModalPreview();
+    }
+}
+
+function closeDownloadModal() {
+    if (downloadModal) {
+        downloadModal.classList.add('hidden');
+        resetProgress();
+    }
+}
+
+function updateModalPreview() {
+    if (previewFreq && frequencyInput) {
+        previewFreq.textContent = parseFloat(frequencyInput.value).toFixed(2) + ' Hz';
+    }
+    if (previewWave) {
+        previewWave.textContent = currentWaveform.charAt(0).toUpperCase() + currentWaveform.slice(1);
+    }
+    if (previewMode) {
+        previewMode.textContent = isBinaural ? `Binaural +${binauralBeatFreq}Hz` : 'Mono';
+    }
+}
+
+// Duration Slider
+if (downloadDuration) {
+    downloadDuration.addEventListener('input', (e) => {
+        if (durationValue) {
+            durationValue.textContent = e.target.value + ' min';
+        }
+    });
+}
+
+// Format Selection
+formatBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+        formatBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        selectedFormat = btn.getAttribute('data-format');
+    });
+});
+
+// Generate Button
+if (generateBtn) {
+    generateBtn.addEventListener('click', generateAndDownload);
+}
+
+async function generateAndDownload() {
+    const frequency = parseFloat(frequencyInput?.value || 7.83);
+    const durationMinutes = parseInt(downloadDuration?.value || 5);
+    const durationSeconds = durationMinutes * 60;
+    const sampleRate = 44100;
+    const numSamples = sampleRate * durationSeconds;
+
+    // Show progress
+    if (progressSection) progressSection.classList.remove('hidden');
+    if (generateBtn) generateBtn.disabled = true;
+    updateProgress(0, 'Initializing audio context...');
+
+    try {
+        // Create offline audio context
+        const offlineCtx = new OfflineAudioContext(2, numSamples, sampleRate);
+
+        // Create gain node
+        const gainNode = offlineCtx.createGain();
+        gainNode.gain.setValueAtTime(0.5, 0);
+        gainNode.connect(offlineCtx.destination);
+
+        // Create merger for stereo
+        const merger = offlineCtx.createChannelMerger(2);
+        merger.connect(gainNode);
+
+        // Left oscillator
+        const oscLeft = offlineCtx.createOscillator();
+        oscLeft.type = currentWaveform;
+        oscLeft.frequency.setValueAtTime(frequency, 0);
+        oscLeft.connect(merger, 0, 0);
+
+        // Right oscillator
+        const oscRight = offlineCtx.createOscillator();
+        oscRight.type = currentWaveform;
+        const rightFreq = isBinaural ? frequency + binauralBeatFreq : frequency;
+        oscRight.frequency.setValueAtTime(rightFreq, 0);
+        oscRight.connect(merger, 0, 1);
+
+        oscLeft.start(0);
+        oscRight.start(0);
+        oscLeft.stop(durationSeconds);
+        oscRight.stop(durationSeconds);
+
+        updateProgress(10, 'Rendering audio...');
+
+        // Render the audio
+        const renderedBuffer = await offlineCtx.startRendering();
+
+        updateProgress(50, 'Encoding audio...');
+
+        let blob;
+        let filename;
+
+        if (selectedFormat === 'wav') {
+            blob = encodeWAV(renderedBuffer);
+            filename = `frekuenzy_${frequency}Hz_${durationMinutes}min.wav`;
+            updateProgress(90, 'Preparing download...');
+        } else {
+            // MP3 encoding
+            updateProgress(60, 'Encoding MP3...');
+            blob = await encodeMP3(renderedBuffer);
+            filename = `frekuenzy_${frequency}Hz_${durationMinutes}min.mp3`;
+        }
+
+        updateProgress(100, 'Download starting...');
+
+        // Trigger download
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = filename;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+
+        setTimeout(() => {
+            updateProgress(100, '✓ Download complete!');
+            setTimeout(() => {
+                resetProgress();
+                if (generateBtn) generateBtn.disabled = false;
+            }, 2000);
+        }, 500);
+
+    } catch (error) {
+        console.error('Download error:', error);
+        updateProgress(0, 'Error: ' + error.message);
+        if (generateBtn) generateBtn.disabled = false;
+    }
+}
+
+function updateProgress(percent, text) {
+    if (progressFill) progressFill.style.width = percent + '%';
+    if (progressText) progressText.textContent = text;
+}
+
+function resetProgress() {
+    if (progressSection) progressSection.classList.add('hidden');
+    if (progressFill) progressFill.style.width = '0%';
+    if (progressText) progressText.textContent = 'Generating audio...';
+}
+
+// WAV Encoding
+function encodeWAV(audioBuffer) {
+    const numChannels = audioBuffer.numberOfChannels;
+    const sampleRate = audioBuffer.sampleRate;
+    const format = 1; // PCM
+    const bitDepth = 16;
+
+    const left = audioBuffer.getChannelData(0);
+    const right = numChannels > 1 ? audioBuffer.getChannelData(1) : left;
+    const length = left.length;
+
+    const buffer = new ArrayBuffer(44 + length * numChannels * 2);
+    const view = new DataView(buffer);
+
+    // RIFF header
+    writeString(view, 0, 'RIFF');
+    view.setUint32(4, 36 + length * numChannels * 2, true);
+    writeString(view, 8, 'WAVE');
+
+    // fmt chunk
+    writeString(view, 12, 'fmt ');
+    view.setUint32(16, 16, true);
+    view.setUint16(20, format, true);
+    view.setUint16(22, numChannels, true);
+    view.setUint32(24, sampleRate, true);
+    view.setUint32(28, sampleRate * numChannels * 2, true);
+    view.setUint16(32, numChannels * 2, true);
+    view.setUint16(34, bitDepth, true);
+
+    // data chunk
+    writeString(view, 36, 'data');
+    view.setUint32(40, length * numChannels * 2, true);
+
+    // Write interleaved samples
+    let offset = 44;
+    for (let i = 0; i < length; i++) {
+        view.setInt16(offset, clamp(left[i]) * 0x7FFF, true);
+        offset += 2;
+        view.setInt16(offset, clamp(right[i]) * 0x7FFF, true);
+        offset += 2;
+    }
+
+    return new Blob([buffer], { type: 'audio/wav' });
+}
+
+function writeString(view, offset, string) {
+    for (let i = 0; i < string.length; i++) {
+        view.setUint8(offset + i, string.charCodeAt(i));
+    }
+}
+
+function clamp(value) {
+    return Math.max(-1, Math.min(1, value));
+}
+
+// MP3 Encoding using lamejs
+async function encodeMP3(audioBuffer) {
+    return new Promise((resolve, reject) => {
+        try {
+            if (typeof lamejs === 'undefined') {
+                throw new Error('MP3 encoder not loaded');
+            }
+
+            const sampleRate = audioBuffer.sampleRate;
+            const numChannels = audioBuffer.numberOfChannels;
+            const samples = audioBuffer.length;
+            const mp3encoder = new lamejs.Mp3Encoder(numChannels, sampleRate, 128);
+
+            const left = audioBuffer.getChannelData(0);
+            const right = numChannels > 1 ? audioBuffer.getChannelData(1) : left;
+
+            // Convert to 16-bit integers
+            const leftInt = new Int16Array(samples);
+            const rightInt = new Int16Array(samples);
+
+            for (let i = 0; i < samples; i++) {
+                leftInt[i] = Math.max(-32768, Math.min(32767, left[i] * 32768));
+                rightInt[i] = Math.max(-32768, Math.min(32767, right[i] * 32768));
+            }
+
+            const mp3Data = [];
+            const blockSize = 1152;
+
+            for (let i = 0; i < samples; i += blockSize) {
+                const leftChunk = leftInt.subarray(i, i + blockSize);
+                const rightChunk = rightInt.subarray(i, i + blockSize);
+                const mp3buf = mp3encoder.encodeBuffer(leftChunk, rightChunk);
+                if (mp3buf.length > 0) {
+                    mp3Data.push(mp3buf);
+                }
+            }
+
+            const mp3End = mp3encoder.flush();
+            if (mp3End.length > 0) {
+                mp3Data.push(mp3End);
+            }
+
+            resolve(new Blob(mp3Data, { type: 'audio/mp3' }));
+        } catch (error) {
+            reject(error);
+        }
+    });
+}
+

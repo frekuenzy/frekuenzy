@@ -1,0 +1,26 @@
+# Frekuenzy
+> The Free Online Spiritual & Healing Frequency Generator
+
+Frekuenzy is a browser-based tool for generating pure healing frequencies, binaural beats, and Solfeggio tones. It is designed to be lightweight, free, and accessible without login.
+
+## Core Capabilities
+- **Frequency Generation**: Precise generation of any frequency from 0.01 Hz to 20,000 Hz.
+- **Waveform Control**: Sine, Square, Triangle, and Sawtooth waves.
+- **Binaural Beats**: Dual-channel generation for creating binaural beats (requires headphones).
+- **Presets**: One-click access to standard Solfeggio frequencies (396Hz, 417Hz, 528Hz, etc.) and Schumann Resonance (7.83Hz).
+- **Brainwave Entrainment**: Tools for bilateral stimulation (EMDR), isochronic tones, and hemi-sync.
+
+## Key Pages
+- [Home / Tool](https://frekuenzy.com/) - The main frequency generator interface.
+- [Schumann Resonance](https://frekuenzy.com/schumann-resonance.html) - Dedicated page for 7.83 Hz grounding.
+- [528 Hz Healing](https://frekuenzy.com/528hz.html) - "Miracle tone" for DNA repair and transformation.
+- [432 Hz Universal](https://frekuenzy.com/432hz.html) - Mathematical consistent frequency for deep relaxation.
+- [963 Hz Crown Chakra](https://frekuenzy.com/963hz.html) - Frequency for spiritual connection.
+- [Bilateral Stimulation](https://frekuenzy.com/bilateral.html) - EMDR tool for trauma and anxiety relief.
+- [Isochronic Tones](https://frekuenzy.com/isochronic.html) - Brainwave entrainment without headphones.
+- [Craving Disruptor](https://frekuenzy.com/craving-disruptor.html) - Visual and auditory tool for impulse control.
+
+## Technical Details
+- **Audio Engine**: Uses the Web Audio API for high-precision, low-latency synthesis.
+- **Privacy**: No user data collection; all generation happens client-side.
+- **Cost**: 100% Free.

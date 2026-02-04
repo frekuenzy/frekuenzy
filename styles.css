@@ -1572,12 +1572,14 @@ input:checked+.slider:before {
 
 .download-action-btn {
     width: 100%;
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-md);
-    padding: var(--spacing-md) var(--spacing-lg);
-    background: linear-gradient(135deg, rgba(157, 0, 255, 0.15), rgba(255, 0, 255, 0.15));
-    border: 1px solid rgba(157, 0, 255, 0.4);
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: linear-gradient(135deg, rgba(157, 0, 255, 0.2), rgba(255, 0, 255, 0.2));
+    border: 2px solid rgba(157, 0, 255, 0.5);
     border-radius: 16px;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -1585,45 +1587,52 @@ input:checked+.slider:before {
 }
 
 .download-action-btn:hover {
-    background: linear-gradient(135deg, rgba(157, 0, 255, 0.25), rgba(255, 0, 255, 0.25));
+    background: linear-gradient(135deg, rgba(157, 0, 255, 0.35), rgba(255, 0, 255, 0.35));
     border-color: var(--accent-secondary);
-    transform: translateX(4px);
-    box-shadow: 0 4px 20px rgba(157, 0, 255, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px rgba(157, 0, 255, 0.4);
 }
 
 .download-icon {
-    font-size: 1.5rem;
+    font-size: 2rem;
     flex-shrink: 0;
+    display: inline-block;
 }
 
 .download-text-group {
     flex: 1;
-    display: flex;
-    flex-direction: column;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    min-width: 0;
 }
 
 .download-main {
     font-family: var(--font-display);
     font-size: 1rem;
-    font-weight: 600;
+    font-weight: 700;
     color: var(--text-primary);
     letter-spacing: 0.05em;
+    display: block;
+    white-space: nowrap;
 }
 
 .download-sub {
-    font-size: 0.75rem;
+    font-size: 0.8rem;
     color: var(--text-secondary);
-    margin-top: 2px;
+    margin-top: 4px;
+    display: block;
 }
 
 .download-arrow {
-    font-size: 1.25rem;
+    font-size: 1.5rem;
     color: var(--accent-secondary);
     transition: transform 0.3s ease;
+    flex-shrink: 0;
 }
 
 .download-action-btn:hover .download-arrow {
-    transform: translateX(4px);
+    transform: translateX(6px);
 }
 
 /* Modal Overlay */

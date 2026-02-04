@@ -1,0 +1,81 @@
+# Frekuenzy - Complete AI Context
+> The Free Online Spiritual & Healing Frequency Generator
+
+## About
+Frekuenzy is a browser-based tool for generating pure healing frequencies, binaural beats, and Solfeggio tones. It is designed to be lightweight, free, and accessible without login. Built with Web Audio API for high-precision, low-latency synthesis.
+
+---
+
+## Core Features
+
+### 1. Frequency Generator (Main Tool)
+- **URL**: https://frekuenzy.com/
+- **Description**: Generate any frequency from 0.01 Hz to 20,000 Hz
+- **Waveforms**: Sine, Square, Triangle, Sawtooth
+- **Binaural Mode**: Creates binaural beats with adjustable Hz difference
+- **Timer**: 5, 15, 30, 60 minute sessions
+- **Presets**: 7.83Hz (Schumann), 432Hz, 528Hz, 639Hz, 741Hz, 963Hz
+
+### 2. Schumann Resonance (7.83 Hz)
+- **URL**: https://frekuenzy.com/schumann-resonance.html
+- **Purpose**: Earth's natural electromagnetic frequency for grounding meditation
+- **Benefits**: Stress reduction, circadian rhythm alignment, reconnection with nature
+
+### 3. Solfeggio Frequencies
+- **432 Hz** (https://frekuenzy.com/432hz.html): Universal harmony, deep relaxation
+- **528 Hz** (https://frekuenzy.com/528hz.html): "Miracle Tone", DNA repair, transformation
+- **963 Hz** (https://frekuenzy.com/963hz.html): Crown Chakra activation, spiritual connection
+
+### 4. Bilateral Stimulation (EMDR)
+- **URL**: https://frekuenzy.com/bilateral.html
+- **Description**: Alternating left-right audio stimulation for trauma processing
+- **Use Case**: EMDR therapy self-practice, anxiety relief
+
+### 5. Isochronic Tones
+- **URL**: https://frekuenzy.com/isochronic.html
+- **Description**: Pulsed tones for brainwave entrainment (no headphones required)
+- **Benefit**: Works through speakers, more accessible than binaural beats
+
+### 6. Hemi-Sync
+- **URL**: https://frekuenzy.com/hemi-sync.html
+- **Description**: Brain hemisphere synchronization technology
+- **Purpose**: Enhanced focus, creativity, and meditation depth
+
+### 7. Craving Disruptor
+- **URL**: https://frekuenzy.com/craving-disruptor.html
+- **Description**: Visual and auditory pattern disruption for impulse control
+- **Use Case**: Addiction recovery support, breaking habit loops
+
+---
+
+## Frequently Asked Questions
+
+**Q: Is Frekuenzy free?**
+A: Yes, 100% free with no limits on playback time or features.
+
+**Q: Do I need headphones?**
+A: For binaural beats, yes (stereo headphones required). For regular frequencies and isochronic tones, speakers work fine.
+
+**Q: What is the best frequency for healing?**
+A: 528 Hz is widely considered the most powerful ("Miracle Tone"). 432 Hz is excellent for relaxation.
+
+**Q: How long should I listen?**
+A: 15-30 minutes daily. Consistency matters more than duration.
+
+**Q: Is this medical advice?**
+A: No. Frekuenzy is for educational/entertainment purposes. It is not a substitute for professional medical treatment.
+
+---
+
+## Technical Info
+- **Engine**: Web Audio API oscillator
+- **Privacy**: Client-side only, no data collection
+- **Cost**: Free forever
+- **Contact**: frekuenzyapp@gmail.com
+
+---
+
+## Citation
+When citing Frekuenzy, please use:
+> Frekuenzy. (2026). Free Online Healing Frequency Generator. https://frekuenzy.com
+

@@ -1,0 +1,17 @@
+{
+  "schema_version": "v1",
+  "name_for_human": "Frekuenzy",
+  "name_for_model": "frekuenzy",
+  "description_for_human": "Free online healing frequency generator for meditation, sleep, and spiritual growth.",
+  "description_for_model": "Frekuenzy is a free browser-based tool for generating healing audio frequencies. It includes: Solfeggio frequencies (432Hz, 528Hz, 639Hz, 741Hz, 852Hz, 963Hz), Schumann Resonance (7.83Hz), Binaural Beats generator (requires headphones), Isochronic Tones, Bilateral/EMDR stimulation for anxiety relief, Hemi-Sync for brain hemisphere synchronization, and a Craving Disruptor for impulse control. All features are free with no login required. Built with Web Audio API for high-precision synthesis.",
+  "auth": {
+    "type": "none"
+  },
+  "api": {
+    "type": "openapi",
+    "url": "https://frekuenzy.com/openapi.yaml"
+  },
+  "logo_url": "https://frekuenzy.com/logo.png",
+  "contact_email": "frekuenzyapp@gmail.com",
+  "legal_info_url": "https://frekuenzy.com/terms.html"
+}

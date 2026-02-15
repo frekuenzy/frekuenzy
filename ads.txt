@@ -5,6 +5,8 @@ contact=directsales@ezoic.com
 managerdomain=ezoic.ai
 
 ezoic.ai, 4ad140d1916999124cac0e2c0b9ddd65, DIRECT
+ezoic.ai, 0761ca3240586a780b8a7614559ff284, DIRECT
+ezoic.co.uk, 0761ca3240586a780b8a7614559ff284, DIRECT
 # 35
 themediagrid.com, Q19AKF, DIRECT, 35d5010d7789b49d
 sonobi.com, 192ecdea01, RESELLER, d1a215d9eb5aee9e

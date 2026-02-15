@@ -1,4 +1,1 @@
-# Ezoic ads.txt
-# TODO: Fetch your full ads.txt content from your Ezoic dashboard
-# or from https://srv.adstxtmanager.com/19390/frekuenzy.com
-# and paste it here to replace this placeholder.
+
